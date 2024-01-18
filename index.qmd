@@ -41,6 +41,9 @@ number-sections: true
 ## Results
 
 ```{r}
+#| eval: true
+#| echo: false
+#| warning: false
 library(tidyverse)
 df <- readRDS("data/clean.rds")
 n_obs <- nrow(df)
