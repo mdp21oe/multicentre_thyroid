@@ -1,34 +1,35 @@
 ---
-title: La Palma Earthquakes
+title: Multicentren thyroid nodule study
 author:
-  - name: Steve Purves
+  - name: Ovie Edafe
     orcid: 0000-0002-0760-5497
     corresponding: true
-    email: steve@curvenote.com
+    email: oedafe1@sheffied.ac.uk
     roles:
       - Investigation
       - Project administration
       - Software
       - Visualization
     affiliations:
-      - Curvenote
-  - name: Rowan Cockett
+      - University of Sheffield
+  - name: Sabapathy P Balasubramanian
     orcid: 0000-0002-7859-8394
     corresponding: false
     roles: []
     affiliations:
-      - Curvenote
+      - University of Sheffield
 keywords:
-  - La Palma
-  - Earthquakes
+  - Thyroid nodules
+  - Thyroid cancer
 abstract: |
-  In September 2021, a significant jump in seismic activity on the island of La Palma (Canary Islands, Spain) signaled the start of a volcanic crisis that still continues at the time of writing. Earthquake data is continually collected and published by the Instituto Geográphico Nacional (IGN). ...
+  The incidence, modes of presentation, and distribution of pathology of thyroid nodules in the UK is not well characterised. The aim of the study is to understand the epidemiology and management pathways of thyroid nodules in the UK.This was a retrospective study over a 6-month period. We included all consecutive adult patients referred for investigation of a thyroid nodule.Twelve centres including 573 patients with median age of 54 years were included. Incidental detection was reported in in 31.6%. The U classifications were: U1 (0.5%), U2 (45.6%), U3 (44.4%), U4 (7.2%), U5 (2.3%). Of the patients who had FNAC, the Thy classifications were: Thy1 (21.9%), Thy2 (37.5%), Thy3a (10.3%), Thy3f (20.9%), Thy4 (4.7%), Thy5 (4.7%). Core biopsy was performed in 8 (1.4%) patients. The initial management was thyroidectomy in 23.6% and conservative management in 72.8%. In the latter group, 55.8% were offered routine review in a median period of 24 weeks and 15% had a change in the initial management strategy. The postoperative pathology was malignant in 41.3% of patients. Age, BMI, previous neck radiation, incidental nodule, and rapid growth factors were not significantly associated with thyroid cancer. The proportion of cancer in ‘Thy3a’ and ‘Thy3f’ nodules were 42.9% and 47.9% respectively.
+
 plain-language-summary: |
   Earthquake data for the island of La Palma from the September 2021 eruption is found ...
 key-points:
   - A web scraping script was developed to pull data from the Instituto Geogràphico Nacional into a machine-readable form for analysis
   - Earthquake events on La Palma are consistent with the presence of both mantle and crustal reservoirs.
-date: last-modified
+date: 2024-01-18
 bibliography: references.bib
 citation:
   container-title: Earth and Space Science
