@@ -4,7 +4,7 @@ author:
   - name: Ovie Edafe
     orcid: 0000-0002-0760-5497
     corresponding: true
-    email: oedafe1@sheffied.ac.uk
+    email: ovieedafe@hotmail.co.uk
     roles:
       - Investigation
       - Project administration
