@@ -43,9 +43,22 @@ number-sections: true
 ```{r}
 library(tidyverse)
 df <- readRDS("data/clean.rds")
-n_obs = nrow(df)
-n_centre = df |> select(data_access_group) |> distinct() |> nrow()
+n_obs <- nrow(df)
+n_centre <- df |> select(data_access_group) |> distinct() |> nrow()
+
+## Calculate numbers by centre, there are two ways of doing this, we can make a table and then select rows from it
+table_clinic_recruiting = df$clinic_recruiting |> table()
+
+## Or we can calculate the values, storing them and also using them to calculate the proportion(/percentage)
+n_ent <- df |> filter(clinic_recruiting == "ENT") |> nrow()
+prop_ent = 100 * n_ent / n_obs
+
+n_gen_surg <- df |> filter(clinic_recruiting == "General surgery (including endocrine surgery)") |> nrow()
+prop_gen_surg = 100 * n_gen_surg / n_obs
+
 ```
 
-A total of `r n_centre` were included in this study; contributing a total of `r n_obs` patients. The mean (SD) age of
-patients included was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) years.
+A total of `r n_centre` centres were included in this study; contributing a total of `r n_obs` patients. The mean (SD)
+age of patients included was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) years. The patients were
+recruired from the following clinics: ENT `r table_clinic_recruiting["ENT"]` (`r prop_ent`%); General Surgery
+`r n_gen_surg` (`r prop_gen_surg`%)...
