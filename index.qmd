@@ -95,6 +95,7 @@ library(gtsummary)
 sites <- df %>% select(data_access_group) %>% tbl_summary()
 
 referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_referral) %>% tbl_summary()
+
                   
 ```
 
