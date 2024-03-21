@@ -11,7 +11,9 @@
 .Rdata
 .httr-oauth
 .DS_Store
-_freeze
+_freeze/
+index_files/
+*.html
 
 # Data
 data/
