@@ -1,38 +1,55 @@
 ---
-title: "Multicentre Thyroid Nodule Study"
+title: "Presentation and management of thyroid nddules - a United Kingdom multicentre study"
 author:
   - name: Ovie Edafe
     orcid: 0000-0002-6205-806X
     corresponding: true
     email: ovieedafe@hotmail.co.uk
     roles:
-      - Investigation
-      - Project administration
-      - Software
-      - Visualization
+      - Researcher
+    affiliations:
+      - Department of Oncology & Metabolism, University of Sheffield
+  - name: Neil Shephard
+    orcid: 
+    corresponding: false
+    email: 
+    roles:
+      - Researcher
     affiliations:
       - University of Sheffield
   - name: Sabapathy P Balasubramanian
-    orcid: 0000-0002-7859-8394
+    orcid: 0000-0001-5953-2843
     corresponding: false
-    roles: []
+    roles: Researcher
     affiliations:
-      - University of Sheffield
+      - Directorate of General Surgery, Sheffield Teaching Hospitals NHS Foundation Trust
+  - name: Thy3000 Collaborators
+    orcid: 
+    corresponding: false
+    roles: Collaborators
+    affiliations:
+      
 keywords:
   - Thyroid nodules
   - Thyroid cancer
 abstract: |
-  The incidence, modes of presentation, and distribution of pathology of thyroid nodules in the UK is not well characterised. The aim of the study is to understand the epidemiology and management pathways of thyroid nodules in the UK.This was a retrospective study over a 6-month period. We included all consecutive adult patients referred for investigation of a thyroid nodule.Twelve centres including 573 patients with median age of 54 years were included. Incidental detection was reported in in 31.6%. The U classifications were: U1 (0.5%), U2 (45.6%), U3 (44.4%), U4 (7.2%), U5 (2.3%). Of the patients who had FNAC, the Thy classifications were: Thy1 (21.9%), Thy2 (37.5%), Thy3a (10.3%), Thy3f (20.9%), Thy4 (4.7%), Thy5 (4.7%). Core biopsy was performed in 8 (1.4%) patients. The initial management was thyroidectomy in 23.6% and conservative management in 72.8%. In the latter group, 55.8% were offered routine review in a median period of 24 weeks and 15% had a change in the initial management strategy. The postoperative pathology was malignant in 41.3% of patients. Age, BMI, previous neck radiation, incidental nodule, and rapid growth factors were not significantly associated with thyroid cancer. The proportion of cancer in ‘Thy3a’ and ‘Thy3f’ nodules were 42.9% and 47.9% respectively.
+### Introduction The incidence, modes of presentation, and distribution of pathology of thyroid nodules in the United Kingdom (UK) is not well characterised. The aim of the study is to understand the epidemiology and management pathways of thyroid nodules in the UK.
+## Methods 
+##This was a retrospective study over a 6-month period. We included all consecutive adult patients referred for investigation of a thyroid nodule.
+## Results 
+## A total of 12 centres including 573 patients with median age of 54 years were included. Incidental detection of thyroid nodule was reported in 31.6%. The U classifications were: U1 (0.5%), U2 (45.6%), U3 (44.4%), U4 (7.2%), U5 (2.3%). Of the patients who had FNAC, the Thy classifications were: Thy1 (21.9%), Thy2 (37.5%), Thy3a (10.3%), Thy3f (20.9%), Thy4 (4.7%), Thy5 (4.7%). Core biopsy was performed in 8 (1.4%) patients. The initial management was thyroidectomy in 23.6% and conservative management in 72.8%. In the latter group, 55.8% were offered routine review in a median period of 24 weeks and 15% had a change in the initial management strategy. The postoperative pathology was malignant in 41.3% of patients. Age, BMI, previous neck irradiation, incidental nodule, and rapid growth factors were not significantly associated with thyroid cancer. The proportion of cancer in ‘Thy3a’ and ‘Thy3f’ nodules were 42.9% and 47.9% respectively. 
+##Conclusion
+##Around 60% of thyroid nodules subjected to diagnostic thyroidectomy were benign. Better preoperative predictors and tools to differentiate between benign and malignat thyroid nodules are needed.
 
 plain-language-summary: |
-    TODO - plain language summary
+    This was a multicentre study to analyse the presentation of thyroid nodules in the United Kingdom (UK). A total of 573 patients with thyroid nodules were included across 12 sites. Around 20% of patients underwent diagnostic thyroidectomy.Of the patients who underwent diagnostic thyroidectomy, around 60% had a benign pathology. This highlights the need for better preoperative factors and tools to differentiate between benign and malignant thyroid nodules.
 key-points:
-  - Keypoint 1
-  - Keypoint 2
+  - A high proportion of diagnostic thyroidectomy shows benign pathology
+  - Better discrimators between benign and malignant thyroid nodules are required in the UK
 date: 2024-03-21
 bibliography: references.bib
 citation:
-  container-title: "Multicentre Thyroid Nodule Study"
+  container-title: "Multicentre study on thyroid nodules"
 number-sections: true
 ---
 
@@ -60,15 +77,7 @@ df <- readRDS("data/clean.rds")
 
 ## Introduction
 
-The epidemiology of thyroid nodules and in particular modes of presentation and pathology, is not well characterised in
-the UK @abdellateif2020.  Common reasons for referral of patients with thyroid nodules to secondary care include neck lump,
-abnormal thyroid function test and compressive symptoms.  Incidental thyroid lesions are increasingly being identified
-@mitchell2005. Given how common thyroid nodules are, and the low yield thyroid cancer (4-6.5%) @tamhane2016 in patients with
-presenting with thyroid nodules, most patients referred via this pathway are likely to have benign disease @perros2014. The
-standard practice for evaluating thyroid nodules in the UK includes ultrasound evaluation to grade the nodule as per the
-BTA ultrasound classification system. Anecdotally, there is thought to be variability with regards to the initial
-management of nodules and follow up of patients. The aim of this study was to understand the modes of presentation and
-distribution of pathologies in thyroid nodules, and the  management pathways.
+The epidemiology of thyroid nodules and in particular modes of presentation and pathology is not well characterised in the United Kingdom (UK) @abdellateif2020.  Common reasons for referral of patients with thyroid nodules to secondary care include neck lump, abnormal thyroid function test and compressive symptoms.  Incidental thyroid lesions are increasingly being identified @mitchell2005. Given how common thyroid nodules are and the low yield thyroid cancer (4-6.5%) @tamhane2016 in patients with presenting with thyroid nodules, most patients referred via this pathway are likely to have benign disease @perros2014. The standard practice for evaluating thyroid nodules in the UK includes ultrasound evaluation to grade the nodule as per the BTA ultrasound classification system. Anecdotally, there is thought to be variability with regards to the initial management of nodules and follow up of patients. The aim of this study was to understand the modes of presentation and distribution of pathologies in thyroid nodules, and the  management pathways.
 
 
 ## Methods
@@ -213,7 +222,7 @@ referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_refe
 
 A total of `r n_centre` centres were included in this study; contributing a total of `r n_obs` patients. The mean (SD)
 age of patients included was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) years. The patients were
-recruired from the following clinics: ENT `r clinic_recruiting["ENT"]` (`r prop_ent`%); General Surgery
+recruited from the following clinics: ENT `r clinic_recruiting["ENT"]` (`r prop_ent`%); General Surgery
 `r n_gen_surg` (`r prop_gen_surg`%)...
 
 ## Results
