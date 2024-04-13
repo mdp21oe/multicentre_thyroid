@@ -1,5 +1,5 @@
 ---
-title: "Presentation and management of thyroid nddules - a United Kingdom multicentre study"
+title: "A multicentre observational study of the epidemiology and initial management pathway of thyroid nodules"
 author:
   - name: Ovie Edafe
     orcid: 0000-0002-6205-806X
@@ -79,18 +79,11 @@ df <- readRDS("data/clean.rds")
 
 The epidemiology of thyroid nodules and in particular modes of presentation and pathology is not well characterised in the United Kingdom (UK) @abdellateif2020.  Common reasons for referral of patients with thyroid nodules to secondary care include neck lump, abnormal thyroid function test and compressive symptoms.  Incidental thyroid lesions are increasingly being identified @mitchell2005. Given how common thyroid nodules are and the low yield thyroid cancer (4-6.5%) @tamhane2016 in patients with presenting with thyroid nodules, most patients referred via this pathway are likely to have benign disease @perros2014. The standard practice for evaluating thyroid nodules in the UK includes ultrasound evaluation to grade the nodule as per the BTA ultrasound classification system. Anecdotally, there is thought to be variability with regards to the initial management of nodules and follow up of patients. The aim of this study was to understand the modes of presentation and distribution of pathologies in thyroid nodules, and the  management pathways.
 
-
 ## Methods
 
 ### Centre eligibility
 
-All secondary care centres investigating and managing patients with thyroid nodules were eligible for
-inclusion. Potential individual principal investigators were invited to participate in this study through the British
-Association of Endocrine and Thyroid surgeons (BAETS). Each centre was required to have a consultant PI and a trainee
-lead to manage the study within their centre. Centres were required to contribute consecutive patients presenting with
-thyroid nodules within the study period to be eligible for participation. The expectation was that each site would
-contribute at least 30 consecutive patients to the study. A total of 42 sites (including the lead site) initially showed
-interest in participating in the study. The potential consultant PIs of each site were contacted via email with the
+All secondary care centres investigating and managing patients with thyroid nodules were eligible for inclusion. Potential individual principal investigators were invited to participate in this study through the British Association of Endocrine and Thyroid surgeons (BAETS). Each centre was required to have a consultant priniciple investigator (PI) and a trainee lead to manage the study. Centres were required to contribute consecutive patients presenting with thyroid nodules within the study period to be eligible for participation. The target was that each site would contribute at least 30 consecutive patients to the study. A total of 42 sites initially showed interest in participating in the study. The potential consultant PIs of each site were contacted via email with the
 study protocol and guidance for registration of the study locally. In addition, the local research offices were
 contacted. At least four reminder emails were sent to each site over a six-month period. Seventeen sites completed the
 local registration process, but only 14 sites contributed data towards the study. Three sites were sent reminders at
@@ -100,38 +93,28 @@ provide; these sites were excluded. Data from 12 sites were included in the fina
 
 ### Patient inclusion and exclusion criteria Inclusion criteria
 
-All adult patients (aged 18 or above) being referred for investigation of thyroid nodule to secondary care. Exclusion
-criteria The exclusion criteria were as follows:
+All adult patients (aged 18 or above) being referred for investigation of thyroid nodule to secondary care. The exclusion criteria were as follows: patients attending clinics for follow up appointments after investigation or treatment or for continuation of conservative treatment; new patients referred for specialist treatment from another secondary care setting; and patients referred again after being seen or treated previously for a thyroid nodule in the last two years.
 
-- Patients attending clinics for follow up appointments after investigation or treatment or for continuation of
-  conservative treatment.
-- New patients referred for specialist treatment from another secondary care setting.
-- Patients referred again after being seen or treated previously for a thyroid nodule in the last 2 years.
-
-#### Participant identification and recruitment
+### Participant identification and recruitment
 
 There was no direct contact with patients given the retrospective nature of the study. Patient records that met the
-above inclusion criteria were eligible for inclusion. Methods for identifying potential records were outlined and
-circulated to each centre (see Figure 1.)
+above inclusion criteria were eligible for inclusion.
 
 ### Variables
 
 Data on the following variables were collected: patient demographics, referral details, clinical examination findings,
-initial investigations, initial management, pathology results. Data were collected from existing patient clinical
-records (including clinician letters, result of investigations and operation notes). Missing data was be noted.
-Data collection Data was collected using a standardised data collection form. See Appendix 2. This was piloted on 10
-patients initially and then further refined prior to being finalised. The data collection form was created on RedCap
-database. The RedCap database is an online data collection tool established for the use in multicentre research studies.
+initial investigations, initial management, pathology results. Data was collected from existing patient clinical records. Missing data was be noted. Data was collected using a standardised data collection form on the REDCap database. The REDCap database is an online data collection tool established for the use in multicentre research studies.
 
 ### Data analysis
 
 All data collected was analysed using the R Statistical Software @r_citation and the Tidyverse packages @tidyverse. An
 initial descriptive analysis of the variables were performed. Continuous data was summarised as mean and standard
-deviation (SD) if normally distributed, and median and interquartile range where non-normally distributed. Categorical
-data was summarised as frequency and percentages. The Chi-squared test was used to examine the relationship between
-categorical variables and outcome of thyroid cancer. Independent sample t-test or the Mann-Whitney U test was used to
-evaluate the association between continuous variables and thyroid cancer depending on whether the data was normally
-distributed or not. Patients with a Thy2 cytology were considered to have benign pathology.
+deviation (SD) if normally distributed, and median and interquartile range (IQR) where non-normally distributed. Categorical data was summarised as frequency and percentages. The Chi-squared test was used to examine the relationship between categorical variables and outcome of thyroid cancer. Independent sample t-test or the Mann-Whitney U test was used to evaluate the association between continuous variables and thyroid cancer depending on whether the data was normally
+distributed or not. We defined benign pathology as Thy2 cytology or histological confirmation of benign pathology. Malignant nodules waere confirmed on histology.
+
+## Ethical consideration
+
+Ethical approval was obtained from the health research authority (HRA) through the integrated research application system (IRAS) to undertake this study (19/HRA/5351)
 
 
 ```{r}
