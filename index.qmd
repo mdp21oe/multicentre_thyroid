@@ -64,8 +64,8 @@ library(ggplot2)
 library(knitr)
 library(rmarkdown)
 library(tidyverse)
-### df <- readRDS("data/clean.rds")
-df <- readRDS("../thyroid-cancer-prediction/data/r/clean.rds")
+df <- readRDS("data/clean.rds")
+### df <- readRDS("../thyroid-cancer-prediction/data/r/clean.rds")
 library(gtsummary)
 
 # Set global options
@@ -130,7 +130,7 @@ n_centre <- df |>
 ## Table centers, exclude if no recruitments
 by_centre <- df |>
   select(data_access_group) |>
-  droplevels() |>     ## This omoits levels that are unobserved (i.e. "NHS Dumfries and Galloway" and "Wirral")
+  droplevels() |>     ## This omits levels that are unobserved (i.e. "NHS Dumfries and Galloway" and "Wirral")
   table()
 
 
