@@ -78,7 +78,7 @@ df <- readRDS("data/clean.rds")
 
 ## Introduction
 
-The epidemiology of thyroid nodules and in particular modes of presentation and pathology is not well characterised in the United Kingdom (UK) @abdellateif2020.  Common reasons for referral of patients with thyroid nodules to secondary care include neck lump, abnormal thyroid function test and compressive symptoms.  Incidental thyroid lesions are increasingly being identified @mitchell2005. Given how common thyroid nodules are and the low yield thyroid cancer (4-6.5%) @tamhane2016 in patients with presenting with thyroid nodules, most patients referred via this pathway are likely to have benign disease @perros2014. The standard practice for evaluating thyroid nodules in the UK includes ultrasound evaluation to grade the nodule as per the BTA ultrasound classification system. Anecdotally, there is thought to be variability with regards to the initial management of nodules and follow up of patients. The aim of this study was to understand the modes of presentation and distribution of pathologies in thyroid nodules, and the  management pathways.
+The epidemiology of thyroid nodules and in particular modes of presentation and pathology is not well characterised in the United Kingdom (UK) @abdellateif2020.  Common reasons for referral of patients with thyroid nodules to secondary care include neck lump, abnormal thyroid function test and compressive symptoms.  Incidental thyroid lesions are increasingly being identified @mitchell2005. Given how common thyroid nodules are and the low yield thyroid cancer (4-6.5%) @tamhane2016 in patients with presenting with thyroid nodules, most patients referred via this pathway are likely to have benign disease @perros2014. The standard practice for evaluating thyroid nodules in the UK includes ultrasound evaluation to grade the nodule as per the BTA ultrasound classification system. Patients considered to meet threshold for FNAC are those with U3, U4 or U5 nodules @perros2014. FNAC is generally not advised if nodule < 1cm in diameter unless there is clinical suspicious lymph node or extrathyroidal extension @mitchell2016, @perros2014. Anecdotally, there is thought to be variability with regards to the initial management of nodules and follow up of patients. The aim of this study was to understand the modes of presentation and distribution of pathologies in thyroid nodules, and the  management pathways.
 
 ## Methods
 
@@ -190,6 +190,7 @@ bmi_recoded <- nrow(df$bmi)
 sites <- df %>% select(data_access_group) %>% tbl_summary()
 
 referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_referral) %>% tbl_summary()
+
 
 
 ```
@@ -319,12 +320,128 @@ df |>
 
 ```
 
+```{r}
+p_charac <- select(df, c(
+  "age", "bmi", "referral_source", "two_week_wait_referral", "smoking_status",
+  "previous_neck_irradiation", "asa_score"
+))
+CreateTableOne(
+  data = p_charac, vars = c(
+    "age", "bmi",
+    "referral_source",
+    "two_week_wait_referral",
+    "smoking_status",
+    "previous_neck_irradiation",
+    "asa_score"
+  ),
+  factorVars = c("previous_neck_irradiation")
+)
+```
+
+
+```{r}
+CreateTableOne(
+  data = c_charac, vars = c(
+    "neck_symptoms", "incidental_imaging",
+    "incidental_imaging_type",
+    "abnormal_thyroid_function",
+    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
+    "compressive_symptoms", "clinical_assessment", "retrosternal",
+    "palpable_lymphadenopathy", "nodule_rapid_growth"
+  ),
+  factorVars = c(
+    "neck_symptoms","incidental_imaging",
+    "incidental_imaging_type",
+    "abnormal_thyroid_function",
+    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
+    "compressive_symptoms", "clinical_assessment", "retrosternal",
+    "palpable_lymphadenopathy", "nodule_rapid_growth"
+  )
+)
+```
+
+```{r}
+c_charac <- select(df, c(
+  "neck_symptoms", "incidental_imaging", "incidental_imaging_type",
+  "abnormal_thyroid_function",
+  "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
+  "compressive_symptoms", "clinical_assessment", "retrosternal",
+  "palpable_lymphadenopathy", "nodule_rapid_growth"
+))
+CreateTableOne(
+  data = c_charac, vars = c(
+    "neck_symptoms", "incidental_imaging",
+    "incidental_imaging_type",
+    "abnormal_thyroid_function",
+    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
+    "compressive_symptoms", "clinical_assessment", "retrosternal",
+    "palpable_lymphadenopathy", "nodule_rapid_growth"
+  ),
+  factorVars = c(
+    "neck_symptoms", "incidental_imaging",
+    "incidental_imaging_type",
+    "abnormal_thyroid_function",
+    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
+    "compressive_symptoms", "clinical_assessment", "retrosternal",
+    "palpable_lymphadenopathy", "nodule_rapid_growth"
+  )
+)
+```
+
+```{r}
+u_charac <- select(df, c(
+  "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage", 
+  "nodule_ultrasound_lymphadenopathy"))
+CreateTableOne(
+  data = u_charac, vars = c(
+    "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage", 
+    "nodule_ultrasound_lymphadenopathy"),
+  factorVars = c(
+    "nodule_ultrasound_description", "nodule_ultrasound_u_stage", "nodule_ultrasound_lymphadenopathy")
+)
+```
+
+```{r}
+
+biopsy <- select(df, c(
+  "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy"))
+CreateTableOne(
+  data = biopsy, vars = c(
+    "nodule_fna", "nodule_fna_result", "nodule_fna_thy",
+    "core_biopsy"),
+  factorVars = c(
+    "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy"))
+```
+
+```{r}
+management <- select(df, c(
+  "initial_management_decision", "routine_review_offered",
+  "routine_review_offered_interval_weeks", "routine_review_ultrasound",
+  "routine_review_fna", "routine_review_management_strategy_review",
+  "routine_review_management_revised", "routine_review_management_revised_reason",
+  "routine_review_confirm_management_plan", "routine_review_patient_signposting_information",
+  "thyroid_surgery"
+))
+CreateTableOne(data = management, vars = c(
+  "initial_management_decision", "routine_review_offered",
+  "routine_review_offered_interval_weeks", "routine_review_ultrasound",
+  "routine_review_fna", "routine_review_management_strategy_review",
+  "routine_review_management_revised",
+  "routine_review_management_revised_reason",
+  "routine_review_confirm_management_plan",
+  "routine_review_patient_signposting_information",
+  "thyroid_surgery"
+))
+
+```
+
+
 
 ### Patient characteristics
 See Table 2 for the clinical variables at presentation. Smokers and non-smokers represented 88 (33.7%) and 173 (66.3%) respectively. Of note 312 (54.4%) of patients did not have smoking status recorded. Of those who had BMI recorded `r mean(df$bmi, na.rm=TRUE)` (`r sd(df$bmi, na.rm=TRUE)`. Of the patient population, 10/473
 (2.1%) were recorded to have history of previous neck irradiation. Data on previous neck irradiation was missing in 100
 patients. A total of 460 patients had the American Society of Anaesthesiologist (ASA) classifications recorded. The ASA
-classifications were as follows: ASA I, 186 (40.4%); ASA II, 201 (43.7%); ASA III, 70 (15.2%), ASA IV, 3 (0.7%). 
+classifications were as follows: ASA I, 186 (40.4%); ASA II, 201 (43.7%); ASA III, 70 (15.2%), ASA IV, 3 (0.7%). `r table_demograp`
 
 ### Modes of presentation 
 Table xx shows the modes of presentations. A total of 392/573 (68.4%) of thyroid nodules presented with neck symptoms. Other modes of presentation were as follows: biochemical hyperthyroidism, 26/573 (4.5%); biochemical hypothyroidism, 4/573 (0.7%); symptoms of abnormal thyroid function, 22/573 (3.8%). Thyroid nodules were found incidentally on imaging in 181/573 (31.6%) of patients; the imaging modality was recorded in 178 patients. Ultrasound neck was the commonest modality for identification of incidental thyroid nodules 75/178 (42.1%). Other modality for identification of incidental nodules were as follows: CT scan, 55/178 (30.9%); MRI, 24/178 (13.5%); nuclear medicine scan 24/178, (13.5%).
