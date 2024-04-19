@@ -102,7 +102,7 @@ Data on the following variables were collected: patient demographics, referral d
 ### Data analysis
 
 All data collected was analysed using the R Statistical Software @r_citation and the Tidyverse packages @tidyverse. An initial descriptive analysis of the variables were performed. Continuous data was summarised as mean and standard deviation (SD) if normally distributed, and median and interquartile range (IQR) where non-normally distributed. Categorical data was summarised as frequency and percentages. The Chi-squared test was used to examine the relationship between categorical variables and outcome of thyroid cancer. Independent sample t-test or the Mann-Whitney U test was used to evaluate the association between continuous variables and thyroid cancer depending on whether the data was normally
-distributed or not. We defined benign pathology as Thy2 cytology or histological confirmation of benign pathology. Malignant nodules waere confirmed on histology.
+distributed or not. We defined benign pathology as Thy2 cytology or histological confirmation of benign pathology. Malignant nodules were confirmed on histology.
 
 ### Ethical consideration
 
@@ -340,27 +340,6 @@ CreateTableOne(
 
 
 ```{r}
-CreateTableOne(
-  data = c_charac, vars = c(
-    "neck_symptoms", "incidental_imaging",
-    "incidental_imaging_type",
-    "abnormal_thyroid_function",
-    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
-    "compressive_symptoms", "clinical_assessment", "retrosternal",
-    "palpable_lymphadenopathy", "nodule_rapid_growth"
-  ),
-  factorVars = c(
-    "neck_symptoms","incidental_imaging",
-    "incidental_imaging_type",
-    "abnormal_thyroid_function",
-    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
-    "compressive_symptoms", "clinical_assessment", "retrosternal",
-    "palpable_lymphadenopathy", "nodule_rapid_growth"
-  )
-)
-```
-
-```{r}
 c_charac <- select(df, c(
   "neck_symptoms", "incidental_imaging", "incidental_imaging_type",
   "abnormal_thyroid_function",
@@ -378,7 +357,7 @@ CreateTableOne(
     "palpable_lymphadenopathy", "nodule_rapid_growth"
   ),
   factorVars = c(
-    "neck_symptoms", "incidental_imaging",
+    "neck_symptoms","incidental_imaging",
     "incidental_imaging_type",
     "abnormal_thyroid_function",
     "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
@@ -438,23 +417,18 @@ CreateTableOne(data = management, vars = c(
 
 
 ### Patient characteristics
-See Table 2 for the clinical variables at presentation. Smokers and non-smokers represented 88 (33.7%) and 173 (66.3%) respectively. Of note 312 (54.4%) of patients did not have smoking status recorded. Of those who had BMI recorded `r mean(df$bmi, na.rm=TRUE)` (`r sd(df$bmi, na.rm=TRUE)`. Of the patient population, 10/473
-(2.1%) were recorded to have history of previous neck irradiation. Data on previous neck irradiation was missing in 100
-patients. A total of 460 patients had the American Society of Anaesthesiologist (ASA) classifications recorded. The ASA
-classifications were as follows: ASA I, 186 (40.4%); ASA II, 201 (43.7%); ASA III, 70 (15.2%), ASA IV, 3 (0.7%). `r table_demograp`
+See Table for the clinical variables at presentation. Smokers and non-smokers represented 88 (33.7%) and 173 (66.3%) respectively. Of note 312 (54.4%) of patients did not have smoking status recorded. Of those who had BMI recorded `r mean(df$bmi, na.rm=TRUE)` (`r sd(df$bmi, na.rm=TRUE)`. A total of 460 patients had the American Society of Anaesthesiologist (ASA) classifications recorded. The ASA classifications were as follows: ASA I, 186 (40.4%); ASA II, 201 (43.7%); ASA III, 70 (15.2%), ASA IV, 3 (0.7%).
 
 ### Modes of presentation 
-Table xx shows the modes of presentations. A total of 392/573 (68.4%) of thyroid nodules presented with neck symptoms. Other modes of presentation were as follows: biochemical hyperthyroidism, 26/573 (4.5%); biochemical hypothyroidism, 4/573 (0.7%); symptoms of abnormal thyroid function, 22/573 (3.8%). Thyroid nodules were found incidentally on imaging in 181/573 (31.6%) of patients; the imaging modality was recorded in 178 patients. Ultrasound neck was the commonest modality for identification of incidental thyroid nodules 75/178 (42.1%). Other modality for identification of incidental nodules were as follows: CT scan, 55/178 (30.9%); MRI, 24/178 (13.5%); nuclear medicine scan 24/178, (13.5%).
+Table x shows the modes of presentations. A total of 392/573 (68.4%) of thyroid nodules presented with neck symptoms. Other modes of presentation were as follows: biochemical hyperthyroidism, 26/573 (4.5%); biochemical hypothyroidism, 4/573 (0.7%); symptoms of abnormal thyroid function, 22/573 (3.8%). Thyroid nodules were found incidentally on imaging in 181/573 (31.6%) of patients; the imaging modality was recorded in 178 patients. Ultrasound neck was the commonest modality for identification of incidental thyroid nodules 75/178 (42.1%). Other modality for identification of incidental nodules were as follows: CT scan, 55/178 (30.9%); MRI, 24/178 (13.5%); nuclear medicine scan 24/178, (13.5%).
 
-### Symptoms at presentation
-The following symptoms at presentation were recorded: neck lump, 364/573 (63.5%); compressive symptoms (breathing or swallowing difficulty, or voice change), 87/573 (15.2%); symptoms of thyroid dysfunction, 34/573 (5.9%). A total of 136/573 (23.7%) of patients were considered asymptomatic at presentation. 
 
 ### Clinical assessment 
-Rapid perception of growth of the nodule was noted in 54/506 (10.7%) patients. Data on rapid perception of growth was missing in 67 patients. A total of 519 patients had data provided on clinical palpable nodules. On clinical assessment, 265/519 (51.2%) of patients had a single palpable nodule. No nodule was palpable in 161 (31.0%) patients. Retrosternal extension was suspected in 15/397 (3.8 %) patients. Data was missing on retrosternal extension in 176 patients. Thyroid function test (TFT) was done within three months of presentation in 475/570 (83.3%) of patients. Data on TFT was missing in three
-patients.
+The following symptoms at presentation were recorded: neck lump, 364/573 (63.5%); compressive symptoms (breathing or swallowing difficulty, or voice change), 87/573 (15.2%); symptoms of thyroid dysfunction, 34/573 (5.9%). A total of 136/573 (23.7%) of patients were considered asymptomatic at presentation. 
+Rapid perception of growth of the nodule was noted in 54/506 (10.7%) patients. Data on rapid perception of growth was missing in 67 patients. A total of 519 patients had data provided on clinical palpable nodules. On clinical assessment, 265/519 (51.2%) of patients had a single palpable nodule. No nodule was palpable in 161 (31.0%) patients. Retrosternal extension was suspected in 15/397 (3.8 %) patients. Data was missing on retrosternal extension in 176 patients. Thyroid function test (TFT) was done within three months of presentation in 475/570 (83.3%) of patients.
 
 ### Ultrasound findings
- Ultrasound Most patients 551/573 (96.2%) had an ultrasound scan either prior to or following initial assessment in secondary care. Description of the thyroid nodule on ultrasound was available in 544 patients. A single thyroid nodule was seen in 204 (37.5%); more than one thyroid nodules were seen in 321 (59.0%) of cases. The median
+Most patients 551/573 (96.2%) had an ultrasound scan either prior to or following initial assessment in secondary care. Description of the thyroid nodule on ultrasound was available in 544 patients. A single thyroid nodule was seen in 204 (37.5%); more than one thyroid nodules were seen in 321 (59.0%) of cases. The median
 (IQR) maximum diameter of the largest nodule was 23 mm (13-34). The BTA U classification for thyroid nodules was reported in 432 patients. The BTA U classifications were recorded as follows: U1, 2 (0.5%); U2, 197 (45.6%); U3, 192
 (44.4%); U4, 31 (7.2%); U5, 10 (2.3%). See table 7 for the distribution of BTA U classification in seven sites who reported in at least 30 patients. TIRADS reporting was use in 49/574 (8.6%) of patients. Associated abnormal cervical
 lymphadenopathy was recorded in 26 patients (4.5%). Elastography was not used in any patient to assess the thyroid
@@ -475,9 +449,6 @@ distribution of results. See Table 8, it highlight variability in the distributi
 Data on the management of patients following initial investigations was availabe in 561 patients. At total of 417/561 (74.3%) patients were managed conservatively following initial assessment. Of the patients  were conservatively managed following initial investigations (n=417), data on routine review was missing in 10 patients. Routine review was arranged in 227/407 (55.8%) of patients; the median (IQR) time to review following initial assessment was 24 (12-24) weeks. The following interventions after initial investigations were arranged: 135/561 (24.1%); radiofrequency ablation/ethanol injection, 6/561 (1.1%); radioiodine, 3/561 (0.5%).  Of patients who had routine review following initial assessment, a repeat ultrasound thyroid was done in 154/215 (71.6%) of patients; and 45/210 (21.4%) had a repeat FNAC. Furthermore, management decision was changed in a total of 27 (13.4%) patients; all had surgical management. The others continued on a conservative management strategy. 
 
 Of patients who had surgery, the surgery performed were as follows: isthmusectomy, 3 (2.0%); lobectomy, 113 (75.3%); and total thyroidectomy, 34 (22.7%). The postoperative pathology were benign and malignant in 108 (58.7%) and 76 (41.3%) respectively. The rates of malignant rates as per the different Thy calssifications were: Thy1, 8/25  (32.0%); Thy2, 5/26  (19.2%); Thy3a, 9/21 (42.9%); Thy3f, 23/48 (47.9%); Thy4, 10/13  (76.9%); Thy 5, 14/14 (100%). The association between clinical variables and thyroid cancer were evaluated (Table 9). Palpable lymphadenopathy at presentation was significantly associated with thyroid cancer in patients presenting with thyroid nodules. Other clinical factors were not clinically significant. 
- 
-
-
 
 ## Discussion
 The multicentre observational study examined the presentation and initial management of thyroid nodules in secondary
