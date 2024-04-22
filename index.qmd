@@ -448,7 +448,10 @@ distribution of results. See Table 8, it highlight variability in the distributi
 ### Management
 Data on the management of patients following initial investigations was availabe in 561 patients. At total of 417/561 (74.3%) patients were managed conservatively following initial assessment. Of the patients  were conservatively managed following initial investigations (n=417), data on routine review was missing in 10 patients. Routine review was arranged in 227/407 (55.8%) of patients; the median (IQR) time to review following initial assessment was 24 (12-24) weeks. The following interventions after initial investigations were arranged: 135/561 (24.1%); radiofrequency ablation/ethanol injection, 6/561 (1.1%); radioiodine, 3/561 (0.5%).  Of patients who had routine review following initial assessment, a repeat ultrasound thyroid was done in 154/215 (71.6%) of patients; and 45/210 (21.4%) had a repeat FNAC. Furthermore, management decision was changed in a total of 27 (13.4%) patients; all had surgical management. The others continued on a conservative management strategy. 
 
-Of patients who had surgery, the surgery performed were as follows: isthmusectomy, 3 (2.0%); lobectomy, 113 (75.3%); and total thyroidectomy, 34 (22.7%). The postoperative pathology were benign and malignant in 108 (58.7%) and 76 (41.3%) respectively. The rates of malignant rates as per the different Thy calssifications were: Thy1, 8/25  (32.0%); Thy2, 5/26  (19.2%); Thy3a, 9/21 (42.9%); Thy3f, 23/48 (47.9%); Thy4, 10/13  (76.9%); Thy 5, 14/14 (100%). The association between clinical variables and thyroid cancer were evaluated (Table 9). Palpable lymphadenopathy at presentation was significantly associated with thyroid cancer in patients presenting with thyroid nodules. Other clinical factors were not clinically significant. 
+Of patients who had surgery, the surgery performed were as follows: isthmusectomy, 3 (2.0%); lobectomy, 113 (75.3%); and total thyroidectomy, 34 (22.7%). The postoperative pathology were benign and malignant in 108 (58.7%) and 76 (41.3%) respectively. The rates of malignant rates as per the different Thy classifications were: Thy1, 8/25  (32.0%); Thy2, 5/26  (19.2%); Thy3a, 9/21 (42.9%); Thy3f, 23/48 (47.9%); Thy4, 10/13  (76.9%); Thy 5, 14/14 (100%). he association between clinical variables and thyroid cancer
+
+### Predictors of malignancy
+We evaluated potential predictors for malignancy. Palpable lymphadenopathy at presentation was significantly associated with thyroid cancer in patients presenting with thyroid nodules. Other clinical factors were not clinically significant. 
 
 ## Discussion
 The multicentre observational study examined the presentation and initial management of thyroid nodules in secondary
@@ -623,7 +626,7 @@ variables.
 
 ## Conclusion
 
-TODO
+Around 60% of patients who underwent diagnostic thyroidectomy for thyroid nodules were found to have benign pathology. This highlights the need for better preoperative descriminators between benign and malignant thyroid nodules, to avoid unncessary diagnostic surgery and its associated morbidity.
 
 ## Notes from Neil
 
