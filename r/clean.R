@@ -413,8 +413,12 @@ df <- df |>
       .default = as.character(clinical_assessment)
     ),
     nodule_fna_thy = dplyr::case_when(nodule_fna_thy == "Not Applicable" ~ NA_character_,
-      .default = stringr::str_sub(nodule_fna_thy, 1, 4)
-    ),
+      .default = stringr::str_sub(nodule_fna_thy, 1, 5)
+      ),
+    ## Comment the following if you _don't_ want to group Thy1c with Thy1 and Thy2c with Thy2
+    nodule_fna_thy = dplyr::case_when(nodule_fna_thy == "Thy1c" ~ "Thy1",
+                                      nodule_fna_thy == "Thy2c" ~ "Thy2",
+                                      .default = nodule_fna_thy)
   )
 
 df <- df |>
@@ -641,6 +645,29 @@ exclude_data_access_group <- c("NHS Dumfries and Galloway", "Wirral")
 df <- df |>
   dplyr::filter(!data_access_group %in% exclude_data_access_group)
 # Count how many observations and table data_access_group to check neither center appears
+
+## Reapply labels
+var_labels <- c(
+    record_id = "Record ID",
+    data_access_group = "Data Access Group",
+    study_id = "Study ID",
+    date_referral = "Date of referral",
+    clinic_recruiting = "Clinic patient recruited from?",
+    clinic_recruiting_other = "If Other",
+    date_clinic = "The date the patient was seen in clinic",
+    referral_source = "Referral source",
+    referral_source_other = "If Other, please specify",
+    presentation = "Presentation",
+    presentation_complete = "Complete?",
+    age = "Age",
+    bmi = "BMI",
+    asa_score = "ASA Score",
+    smoking_status = "Smoking Status",
+    two_week_wait_referral = "Two week wait for referral",
+    previous_neck_irradiation = "Previous neck irradiation",
+    referral_source = "Referral source"
+)
+Hmisc::label(df) <- as.list(var_labels[match(names(df), names(var_labels))])
 
 ## Finally save the data
 saveRDS(df, file = paste(r_dir, "clean.rds", sep = "/"))

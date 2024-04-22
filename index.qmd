@@ -71,6 +71,13 @@ library(tableone)
 # Set global options
 options(digits = 3)
 
+## Set directories based on current location
+base_dir <- getwd()
+data_dir <- paste(base_dir, "data", sep = "/")
+csv_dir <- paste(data_dir, "csv", sep = "/")
+r_dir <- paste(data_dir, "r", sep = "/")
+r_scripts <- paste(base_dir, "r", sep = "/")
+
 
 # Load data
 source("r/clean.R")
@@ -335,11 +342,42 @@ df |>
 ```
 
 ```{r}
-#| label: tbl-next-irradiation
+#| label: tbl-neck-irradiation-gtsummary
 #| eval: true
 #| echo: false
 #| warning: false
-#| tbl-caption: "Previous next irradiation"
+#| tbl-caption: "Previous neck irradiation"
+neck_irradiation_gtsummary <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c(
+    "age", "bmi", "referral_source", "two_week_wait_referral", "smoking_status",
+    "previous_neck_irradiation", "asa_score"
+  )) |>
+gtsummary::tbl_summary(
+  type = all_continuous() ~ "continuous2",
+  statistic = all_continuous() ~ c(
+    "{N_nonmiss}",
+    "{mean} ({sd})",
+    "{median} ({p25}, {p75})"
+  #  "{min}, {max}"
+))
+neck_irradiation_gtsummary
+
+```
+
+Summary statistics are presented in @tbl-neck-irradiation-gtsummary. The mean and standard deviation of the age of
+patients was `r inline_text(neck_irradiation_gtsummary, variable="age", level="Mean (SD)")`.
+Height and/or weight were only available for `r inline_text(neck_irradiation_gtsummary, variable="bmi",
+level="N")` patietns, of these the mean and standard deviation of BMI in patients was `r inline_text(neck_irradiation_gtsummary,
+variable="bmi", level="Mean (SD)")` whilst the median and inter-quartile range was  `r inline_text(neck_irradiation_gtsummary, variable="bmi",
+level="Median (IQR)")`
+
+```{r}
+#| label: tbl-neck-irradiation-tableone
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Previous neck irradiation"
 p_charac <- select(df, c(
   "age", "bmi", "referral_source", "two_week_wait_referral", "smoking_status",
   "previous_neck_irradiation", "asa_score"
