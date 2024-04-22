@@ -86,14 +86,36 @@ source("r/clean.R")
 
 ## Introduction
 
-The epidemiology of thyroid nodules and in particular modes of presentation and pathology is not well characterised in the United Kingdom (UK) @abdellateif2020.  Common reasons for referral of patients with thyroid nodules to secondary care include neck lump, abnormal thyroid function test and compressive symptoms.  Incidental thyroid lesions are increasingly being identified @mitchell2005. Given how common thyroid nodules are and the low yield thyroid cancer (4-6.5%) @tamhane2016 in patients with presenting with thyroid nodules, most patients referred via this pathway are likely to have benign disease @perros2014. The standard practice for evaluating thyroid nodules in the UK includes ultrasound evaluation to grade the nodule as per the BTA ultrasound classification system. Patients considered to meet threshold for FNAC are those with U3, U4 or U5 nodules @perros2014. FNAC is generally not advised if nodule < 1cm in diameter unless there is clinical suspicious lymph node or extrathyroidal extension @mitchell2016, @perros2014. Anecdotally, there is thought to be variability with regards to the initial management of nodules and follow up of patients. The aim of this study was to understand the modes of presentation and distribution of pathologies in thyroid nodules, and the  management pathways.
+The epidemiology of thyroid nodules and in particular modes of presentation and pathology is not well characterised in
+the United Kingdom (UK) @abdellateif2020.  Common reasons for referral of patients with thyroid nodules to secondary
+care include neck lump, abnormal thyroid function test and compressive symptoms.  Incidental thyroid lesions are
+increasingly being identified @mitchell2005. Given how common thyroid nodules are and the low yield thyroid cancer
+(4-6.5%) @tamhane2016 in patients with presenting with thyroid nodules, most patients referred via this pathway are
+likely to have benign disease @perros2014. The standard practice for evaluating thyroid nodules in the UK includes
+ultrasound evaluation to grade the nodule as per the BTA ultrasound classification system. Patients considered to meet
+threshold for FNAC are those with U3, U4 or U5 nodules @perros2014. FNAC is generally not advised if nodule < 1cm in
+diameter unless there is clinical suspicious lymph node or extrathyroidal extension @mitchell2016,
+@perros2014. Anecdotally, there is thought to be variability with regards to the initial management of nodules and
+follow up of patients. The aim of this study was to understand the modes of presentation and distribution of pathologies
+in thyroid nodules, and the  management pathways.
 
 ## Methods
 
 ### Centre eligibility
 
-All secondary care centres investigating and managing patients with thyroid nodules were eligible for inclusion. Potential individual principal investigators were invited to participate in this study through the British Association of Endocrine and Thyroid surgeons (BAETS). Each centre was required to have a consultant priniciple investigator (PI) and a trainee lead to manage the study. Centres were required to contribute consecutive patients presenting with thyroid nodules within the study period to be eligible for participation. The target was that each site would contribute at least 30 consecutive patients to the study. A total of 42 sites initially showed interest in participating in the study. The potential consultant PIs of each site were contacted via email with the study protocol and guidance for registration of the study locally. In addition, the local research offices were contacted. At least four reminder emails were sent to each site over a six-month period. Seventeen sites completed the
-local registration process, but only 14 sites contributed data towards the study. Three sites were sent reminders at least three times over a six-month period, but no data was provided. Two sites contributed a total of 4 patients each; they were sent reminders at least three times over a six-month period to provide more data However, no further data was provide; these sites were excluded. Data from 12 sites were included in the final analysis.
+All secondary care centres investigating and managing patients with thyroid nodules were eligible for
+inclusion. Potential individual principal investigators were invited to participate in this study through the British
+Association of Endocrine and Thyroid surgeons (BAETS). Each centre was required to have a consultant priniciple
+investigator (PI) and a trainee lead to manage the study. Centres were required to contribute consecutive patients
+presenting with thyroid nodules within the study period to be eligible for participation. The target was that each site
+would contribute at least 30 consecutive patients to the study. A total of 42 sites initially showed interest in
+participating in the study. The potential consultant PIs of each site were contacted via email with the study protocol
+and guidance for registration of the study locally. In addition, the local research offices were contacted. At least
+four reminder emails were sent to each site over a six-month period. Seventeen sites completed the
+local registration process, but only 14 sites contributed data towards the study. Three sites were sent reminders at
+least three times over a six-month period, but no data was provided. Two sites contributed a total of 4 patients each;
+they were sent reminders at least three times over a six-month period to provide more data However, no further data was
+provide; these sites were excluded. Data from 12 sites were included in the final analysis.
 All secondary care centres investigating and managing patients with thyroid nodules were eligible for
 inclusion. Potential individual principal investigators were invited to participate in this study through the British
 Association of Endocrine and Thyroid surgeons (BAETS). Each centre was required to have a consultant priniciple
@@ -110,24 +132,39 @@ provide; these sites were excluded. Data from 12 sites were included in the fina
 
 ### Patient inclusion and exclusion criteria Inclusion criteria
 
-All adult patients (aged 18 or above) being referred for investigation of thyroid nodule to secondary care. The exclusion criteria were as follows: patients attending clinics for follow up appointments after investigation or treatment or for continuation of conservative treatment; new patients referred for specialist treatment from another secondary care setting; and patients referred again after being seen or treated previously for a thyroid nodule in the last two years.
+All adult patients (aged 18 or above) being referred for investigation of thyroid nodule to secondary care. The
+exclusion criteria were as follows: patients attending clinics for follow up appointments after investigation or
+treatment or for continuation of conservative treatment; new patients referred for specialist treatment from another
+secondary care setting; and patients referred again after being seen or treated previously for a thyroid nodule in the
+last two years.
 
 ### Participant identification and recruitment
 
-There was no direct contact with patients given the retrospective nature of the study. Patient records that met the above inclusion criteria were eligible for inclusion.
+There was no direct contact with patients given the retrospective nature of the study. Patient records that met the
+above inclusion criteria were eligible for inclusion.
 
 ### Variables
 
-Data on the following variables were collected: patient demographics, referral details, clinical examination findings, initial investigations, initial management, pathology results. Data was collected from existing patient clinical records. Missing data was be noted. Data was collected using a standardised data collection form on the REDCap database. The REDCap database is an online data collection tool established for the use in multicentre research studies.
+Data on the following variables were collected: patient demographics, referral details, clinical examination findings,
+initial investigations, initial management, pathology results. Data was collected from existing patient clinical
+records. Missing data was be noted. Data was collected using a standardised data collection form on the REDCap
+database. The REDCap database is an online data collection tool established for the use in multicentre research studies.
 
 ### Data analysis
 
-All data collected was analysed using the R Statistical Software @r_citation and the Tidyverse packages @tidyverse. An initial descriptive analysis of the variables were performed. Continuous data was summarised as mean and standard deviation (SD) if normally distributed, and median and interquartile range (IQR) where non-normally distributed. Categorical data was summarised as frequency and percentages. The Chi-squared test was used to examine the relationship between categorical variables and outcome of thyroid cancer. Independent sample t-test or the Mann-Whitney U test was used to evaluate the association between continuous variables and thyroid cancer depending on whether the data was normally
-distributed or not. We defined benign pathology as Thy2 cytology or histological confirmation of benign pathology. Malignant nodules were confirmed on histology.
+All data collected was analysed using the R Statistical Software @r_citation and the Tidyverse packages @tidyverse. An
+initial descriptive analysis of the variables were performed. Continuous data was summarised as mean and standard
+deviation (SD) if normally distributed, and median and interquartile range (IQR) where non-normally
+distributed. Categorical data was summarised as frequency and percentages. The Chi-squared test was used to examine the
+relationship between categorical variables and outcome of thyroid cancer. Independent sample t-test or the Mann-Whitney
+U test was used to evaluate the association between continuous variables and thyroid cancer depending on whether the
+data was normally distributed or not. We defined benign pathology as Thy2 cytology or histological confirmation of benign
+pathology. Malignant nodules were confirmed on histology.
 
 ### Ethical consideration
 
-Ethical approval was obtained from the health research authority (HRA) through the integrated research application system (IRAS) to undertake this study (19/HRA/5351)
+Ethical approval was obtained from the health research authority (HRA) through the integrated research application
+system (IRAS) to undertake this study (19/HRA/5351)
 
 
 ```{r}
@@ -220,8 +257,15 @@ referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_refe
 
 ## Results
 
-A total of `r n_centre` centres were included in this study, with between `r min(by_centre)` and `r max(by_centre)` patients, contributing a total of `r n_obs` patients (see @tbl-recruitment). The mean (SD) of patients include
-was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) (see @tbl-continuous_summary).  Patients were identified from a range of clinics with the majority coming from Ear, Nose and Throat (ENT) (n=`r clinic_recruiting["ENT"]`; `r 100 * (clinic_recruiting["ENT"] / n_obs) `%). The second most common clinic was General Surgery (n=`r clinic_recruiting["General surgery (including endocrine surgery)"]`;`r 100 * (clinic_recruiting["General surgery (including endocrine surgery)"] / n_obs)`%). See table for the distribution of clinics @tbl-clinics. Sources of referral for thyroid nodules were GP and Secondary care in 423 (74.0%) and 150 (26.0%) respectively. Nodules were referred through the NHS as two-week wait (2WW) cancer pathway in 52.4% of cases.
+A total of `r n_centre` centres were included in this study, with between `r min(by_centre)` and `r max(by_centre)`
+patients, contributing a total of `r n_obs` patients (see @tbl-recruitment). The mean (SD) of patients include
+was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) (see @tbl-continuous_summary).  Patients were identified
+from a range of clinics with the majority coming from Ear, Nose and Throat (ENT) (n=`r clinic_recruiting["ENT"]`; `r
+100 * (clinic_recruiting["ENT"] / n_obs) `%). The second most common clinic was General Surgery (n=`r
+clinic_recruiting["General surgery (including endocrine surgery)"]`;`r 100 * (clinic_recruiting["General surgery
+(including endocrine surgery)"] / n_obs)`%). See table for the distribution of clinics @tbl-clinics. Sources of referral
+for thyroid nodules were GP and Secondary care in 423 (74.0%) and 150 (26.0%) respectively. Nodules were referred
+through the NHS as two-week wait (2WW) cancer pathway in 52.4% of cases.
 
 
 ```{r}
@@ -365,12 +409,14 @@ neck_irradiation_gtsummary
 
 ```
 
+<!-- This is an example of how to have comments in Markdown files, if you want to comment out a section start with the -->
+<!-- characters at the beinging of these lines and end with those at the end. -->
 Summary statistics are presented in @tbl-neck-irradiation-gtsummary. The mean and standard deviation of the age of
 patients was `r inline_text(neck_irradiation_gtsummary, variable="age", level="Mean (SD)")`.
 Height and/or weight were only available for `r inline_text(neck_irradiation_gtsummary, variable="bmi",
-level="N")` patietns, of these the mean and standard deviation of BMI in patients was `r inline_text(neck_irradiation_gtsummary,
-variable="bmi", level="Mean (SD)")` whilst the median and inter-quartile range was  `r inline_text(neck_irradiation_gtsummary, variable="bmi",
-level="Median (IQR)")`
+level="N")` patietns, of these the mean and standard deviation of BMI in patients was `r
+inline_text(neck_irradiation_gtsummary, variable="bmi", level="Mean (SD)")` whilst the median and inter-quartile range
+was  `r inline_text(neck_irradiation_gtsummary, variable="bmi", level="Median (IQR)")`
 
 ```{r}
 #| label: tbl-neck-irradiation-tableone
@@ -474,41 +520,81 @@ tone <- CreateTableOne(data = management, vars = c(
 
 
 ### Patient characteristics
-See Table for the clinical variables at presentation. Smokers and non-smokers represented 88 (33.7%) and 173 (66.3%) respectively. Of note 312 (54.4%) of patients did not have smoking status recorded. Of those who had BMI recorded `r mean(df$bmi, na.rm=TRUE)` (`r sd(df$bmi, na.rm=TRUE)`. A total of 460 patients had the American Society of Anaesthesiologist (ASA) classifications recorded. The ASA classifications were as follows: ASA I, 186 (40.4%); ASA II, 201 (43.7%); ASA III, 70 (15.2%), ASA IV, 3 (0.7%).
+
+See Table for the clinical variables at presentation. Smokers and non-smokers represented 88 (33.7%) and 173 (66.3%)
+respectively. Of note 312 (54.4%) of patients did not have smoking status recorded. Of those who had BMI recorded `r
+mean(df$bmi, na.rm=TRUE)` (`r sd(df$bmi, na.rm=TRUE)`. A total of 460 patients had the American Society of
+Anaesthesiologist (ASA) classifications recorded. The ASA classifications were as follows: ASA I, 186 (40.4%); ASA II,
+201 (43.7%); ASA III, 70 (15.2%), ASA IV, 3 (0.7%).
 
 ### Modes of presentation
-Table x shows the modes of presentations. A total of 392/573 (68.4%) of thyroid nodules presented with neck symptoms. Other modes of presentation were as follows: biochemical hyperthyroidism, 26/573 (4.5%); biochemical hypothyroidism, 4/573 (0.7%); symptoms of abnormal thyroid function, 22/573 (3.8%). Thyroid nodules were found incidentally on imaging in 181/573 (31.6%) of patients; the imaging modality was recorded in 178 patients. Ultrasound neck was the commonest modality for identification of incidental thyroid nodules 75/178 (42.1%). Other modality for identification of incidental nodules were as follows: CT scan, 55/178 (30.9%); MRI, 24/178 (13.5%); nuclear medicine scan 24/178, (13.5%).
+
+Table x shows the modes of presentations. A total of 392/573 (68.4%) of thyroid nodules presented with neck
+symptoms. Other modes of presentation were as follows: biochemical hyperthyroidism, 26/573 (4.5%); biochemical
+hypothyroidism, 4/573 (0.7%); symptoms of abnormal thyroid function, 22/573 (3.8%). Thyroid nodules were found
+incidentally on imaging in 181/573 (31.6%) of patients; the imaging modality was recorded in 178 patients. Ultrasound
+neck was the commonest modality for identification of incidental thyroid nodules 75/178 (42.1%). Other modality for
+identification of incidental nodules were as follows: CT scan, 55/178 (30.9%); MRI, 24/178 (13.5%); nuclear medicine
+scan 24/178, (13.5%).
 
 
 ### Clinical assessment
-The following symptoms at presentation were recorded: neck lump, 364/573 (63.5%); compressive symptoms (breathing or swallowing difficulty, or voice change), 87/573 (15.2%); symptoms of thyroid dysfunction, 34/573 (5.9%). A total of 136/573 (23.7%) of patients were considered asymptomatic at presentation.
-Rapid perception of growth of the nodule was noted in 54/506 (10.7%) patients. Data on rapid perception of growth was missing in 67 patients. A total of 519 patients had data provided on clinical palpable nodules. On clinical assessment, 265/519 (51.2%) of patients had a single palpable nodule. No nodule was palpable in 161 (31.0%) patients. Retrosternal extension was suspected in 15/397 (3.8 %) patients. Data was missing on retrosternal extension in 176 patients. Thyroid function test (TFT) was done within three months of presentation in 475/570 (83.3%) of patients.
+The following symptoms at presentation were recorded: neck lump, 364/573 (63.5%); compressive symptoms (breathing or
+swallowing difficulty, or voice change), 87/573 (15.2%); symptoms of thyroid dysfunction, 34/573 (5.9%). A total of
+136/573 (23.7%) of patients were considered asymptomatic at presentation.
+Rapid perception of growth of the nodule was noted in 54/506 (10.7%) patients. Data on rapid perception of growth was
+missing in 67 patients. A total of 519 patients had data provided on clinical palpable nodules. On clinical assessment,
+265/519 (51.2%) of patients had a single palpable nodule. No nodule was palpable in 161 (31.0%) patients. Retrosternal
+extension was suspected in 15/397 (3.8 %) patients. Data was missing on retrosternal extension in 176 patients. Thyroid
+function test (TFT) was done within three months of presentation in 475/570 (83.3%) of patients.
 
 ### Ultrasound findings
-Most patients 551/573 (96.2%) had an ultrasound scan either prior to or following initial assessment in secondary care. Description of the thyroid nodule on ultrasound was available in 544 patients. A single thyroid nodule was seen in 204 (37.5%); more than one thyroid nodules were seen in 321 (59.0%) of cases. The median
-(IQR) maximum diameter of the largest nodule was 23 mm (13-34). The BTA U classification for thyroid nodules was reported in 432 patients. The BTA U classifications were recorded as follows: U1, 2 (0.5%); U2, 197 (45.6%); U3, 192
-(44.4%); U4, 31 (7.2%); U5, 10 (2.3%). See table 7 for the distribution of BTA U classification in seven sites who reported in at least 30 patients. TIRADS reporting was use in 49/574 (8.6%) of patients. Associated abnormal cervical
-lymphadenopathy was recorded in 26 patients (4.5%). Elastography was not used in any patient to assess the thyroid
-nodule.
+Most patients 551/573 (96.2%) had an ultrasound scan either prior to or following initial assessment in secondary
+care. Description of the thyroid nodule on ultrasound was available in 544 patients. A single thyroid nodule was seen in
+204 (37.5%); more than one thyroid nodules were seen in 321 (59.0%) of cases. The median (IQR) maximum diameter of the
+largest nodule was 23 mm (13-34). The BTA U classification for thyroid nodules was reported in 432 patients. The BTA U
+classifications were recorded as follows: U1, 2 (0.5%); U2, 197 (45.6%); U3, 192 (44.4%); U4, 31 (7.2%); U5, 10
+(2.3%). See table 7 for the distribution of BTA U classification in seven sites who reported in at least 30
+patients. TIRADS reporting was use in 49/574 (8.6%) of patients. Associated abnormal cervical lymphadenopathy was
+recorded in 26 patients (4.5%). Elastography was not used in any patient to assess the thyroid nodule.
 
 ### Other imaging
-CT neck was performed to further evaluate the thyroid nodule in a total of 67/573 (11.7%) patients. Commonest reasons for CT evaluation were retrosternal extension (18 patients) and tracheal compression (16 patients). Other reasons documented were extrathyroidal extension/local invasion (7 patients) and extent of lymphadenopathy (7 patients). Furthermore, MRI neck was done in 25/573 (4.4%) patients; commonest reason was to evaluate for extent of lymphadenopathy (7/25, 28%).
+CT neck was performed to further evaluate the thyroid nodule in a total of 67/573 (11.7%) patients. Commonest reasons
+for CT evaluation were retrosternal extension (18 patients) and tracheal compression (16 patients). Other reasons
+documented were extrathyroidal extension/local invasion (7 patients) and extent of lymphadenopathy (7
+patients). Furthermore, MRI neck was done in 25/573 (4.4%) patients; commonest reason was to evaluate for extent of
+lymphadenopathy (7/25, 28%).
 
 ### Fine needle aspiration
+
 FNAC FNAC was performed in a total of 377/573 patients (65.8%) of patients. of
 these, The BTA Thy classification system was provided in the pathology report in 301 (79.8%) of patients who had
 FNAC. The BTA Thy classifications of the nodules were as follows: Thy1, 66/301 (21.9%); Thy2, 113/301 (37.5%); Thy3a,
 31/301 (10.3%); Thy3f, 63/301 (20.9%); Thy4, 14/301 (4.7%); Thy5, 14/301 (4.7%). The Thy classification system was not
 reported in 76 (13.3%) patients. We examined four sites that had a least 30 patients with FNAC done, to see the
-distribution of results. See Table 8, it highlight variability in the distribution of FNAC result. Core biopsy was done in 8 patients
+distribution of results. See Table 8, it highlight variability in the distribution of FNAC result. Core biopsy was done
+in 8 patients
 
 ### Management
-Data on the management of patients following initial investigations was availabe in 561 patients. At total of 417/561 (74.3%) patients were managed conservatively following initial assessment. Of the patients  were conservatively managed following initial investigations (n=417), data on routine review was missing in 10 patients. Routine review was arranged in 227/407 (55.8%) of patients; the median (IQR) time to review following initial assessment was 24 (12-24) weeks. The following interventions after initial investigations were arranged: 135/561 (24.1%); radiofrequency ablation/ethanol injection, 6/561 (1.1%); radioiodine, 3/561 (0.5%).  Of patients who had routine review following initial assessment, a repeat ultrasound thyroid was done in 154/215 (71.6%) of patients; and 45/210 (21.4%) had a repeat FNAC. Furthermore, management decision was changed in a total of 27 (13.4%) patients; all had surgical management. The others continued on a conservative management strategy.
+Data on the management of patients following initial investigations was availabe in 561 patients. At total of 417/561
+(74.3%) patients were managed conservatively following initial assessment. Of the patients  were conservatively managed
+following initial investigations (n=417), data on routine review was missing in 10 patients. Routine review was arranged
+in 227/407 (55.8%) of patients; the median (IQR) time to review following initial assessment was 24 (12-24) weeks. The
+following interventions after initial investigations were arranged: 135/561 (24.1%); radiofrequency ablation/ethanol
+injection, 6/561 (1.1%); radioiodine, 3/561 (0.5%).  Of patients who had routine review following initial assessment, a
+repeat ultrasound thyroid was done in 154/215 (71.6%) of patients; and 45/210 (21.4%) had a repeat FNAC. Furthermore,
+management decision was changed in a total of 27 (13.4%) patients; all had surgical management. The others continued on
+a conservative management strategy.
 
-Of patients who had surgery, the surgery performed were as follows: isthmusectomy, 3 (2.0%); lobectomy, 113 (75.3%); and total thyroidectomy, 34 (22.7%). The postoperative pathology were benign and malignant in 108 (58.7%) and 76 (41.3%) respectively. The rates of malignant rates as per the different Thy classifications were: Thy1, 8/25  (32.0%); Thy2, 5/26  (19.2%); Thy3a, 9/21 (42.9%); Thy3f, 23/48 (47.9%); Thy4, 10/13  (76.9%); Thy 5, 14/14 (100%). he association between clinical variables and thyroid cancer
+Of patients who had surgery, the surgery performed were as follows: isthmusectomy, 3 (2.0%); lobectomy, 113 (75.3%); and
+total thyroidectomy, 34 (22.7%). The postoperative pathology were benign and malignant in 108 (58.7%) and 76 (41.3%)
+respectively. The rates of malignant rates as per the different Thy classifications were: Thy1, 8/25  (32.0%); Thy2,
+5/26  (19.2%); Thy3a, 9/21 (42.9%); Thy3f, 23/48 (47.9%); Thy4, 10/13  (76.9%); Thy 5, 14/14 (100%). he association
+between clinical variables and thyroid cancer
 
 ### Predictors of malignancy
-We evaluated potential predictors for malignancy. Palpable lymphadenopathy at presentation was significantly associated with thyroid cancer in patients presenting with thyroid nodules. Other clinical factors were not clinically significant.
+We evaluated potential predictors for malignancy. Palpable lymphadenopathy at presentation was significantly associated
+with thyroid cancer in patients presenting with thyroid nodules. Other clinical factors were not clinically significant.
 
 ## Discussion
 The multicentre observational study examined the presentation and initial management of thyroid nodules in secondary
@@ -683,7 +769,9 @@ variables.
 
 ## Conclusion
 
-Around 60% of patients who underwent diagnostic thyroidectomy for thyroid nodules were found to have benign pathology. This highlights the need for better preoperative descriminators between benign and malignant thyroid nodules, to avoid unncessary diagnostic surgery and its associated morbidity.
+Around 60% of patients who underwent diagnostic thyroidectomy for thyroid nodules were found to have benign
+pathology. This highlights the need for better preoperative descriminators between benign and malignant thyroid nodules,
+to avoid unncessary diagnostic surgery and its associated morbidity.
 
 ## Notes from Neil
 
