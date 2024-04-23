@@ -611,11 +611,11 @@ df <- df |> dplyr::mutate(
 transform(df,
   referral_source = factor(replace(as.character(referral_source),
     list = !referral_source %in% c("GP"),
-    values = "secondary care"
+    values = "Secondary care"
   ))
 )
-## converting other sources of referral to secondary care
-df$referral_source[df$referral_source %in% c("A&E", "Acute Medicine", "Cardiology", "Endocrinology", "Gastroenterology", "Gynaecology", "Heamatology", "Inpatient", "Oncology", "Oral & Maxillofacial", "Other", "Respiratory", "Rheumatology", "Urology")] <- "secondary care"
+## converting other sources of referral to Secondary care
+df$referral_source[df$referral_source %in% c("A&E", "Acute Medicine", "Cardiology", "Endocrinology", "Gastroenterology", "Gynaecology", "Heamatology", "Inpatient", "Oncology", "Oral & Maxillofacial", "Other", "Respiratory", "Rheumatology", "Urology")] <- "Secondary care"
 ## need to recode the values with cancer in thyroid_surgery_lymph_node_pathology_other_type varible to malignant in the thyroid_surgery_lymph_node_pathology variable
 ## how to add a new variable to an existing data frame, new variable will be called final_pathology
 df$final_pathology <- df$thyroid_surgery_lymph_node_pathology

@@ -273,14 +273,13 @@ referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_refe
 
 A total of `r n_centre` centres were included in this study, with between `r min(by_centre)` and `r max(by_centre)`
 patients, contributing a total of `r n_obs` patients (see @tbl-recruitment). The mean (SD) of patients include
-was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) 
-<!--(see @tbl-continuous_summary).  Patients were identified
+was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) (see @tbl-continuous_summary).  Patients were identified
 from a range of clinics with the majority coming from Ear, Nose and Throat (ENT) (n=`r clinic_recruiting["ENT"]`; `r
 100 * (clinic_recruiting["ENT"] / n_obs) `%). The second most common clinic was General Surgery (n=`r
 clinic_recruiting["General surgery (including endocrine surgery)"]`;`r 100 * (clinic_recruiting["General surgery
 (including endocrine surgery)"] / n_obs)`%). See table for the distribution of clinics @tbl-clinics. Sources of referral
 for thyroid nodules were GP and Secondary care in 423 (74.0%) and 150 (26.0%) respectively. Nodules were referred
-through the NHS as two-week wait (2WW) cancer pathway in 52.4% of cases-->
+through the NHS as two-week wait (2WW) cancer pathway in 52.4% of cases.
 
 
 ```{r}
@@ -307,8 +306,72 @@ select(clinic_recruiting) |>
   gtsummary::modify_caption("Referring Clinics")
 ```
 
+<!--```{r}
+#| label: tbl-continuous_summary
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Continuous variable summary"
+df |>
+  select(age,
+    bmi,
+    neck_symptoms,
+    nodule_maxmimum_diameter_mm) |>
+  gtsummary::tbl_summary() |>
+  gtsummary::modify_caption("Summary of Age, BMI and Nodule Diameter (mm)")
 
-```{r}
+```-->
+
+<!--```{r}
+#| label: fig-age
+#| eval: true
+#| echo: false
+#| warning: false
+#| fig-caption: "Age distribution"
+df |>
+  ggplot(aes(age)) +
+  geom_histogram() +
+  labs(x = "Age (years)", y = "N")
+
+```-->
+
+<!--```{r}
+#| label: tbl-symptoms
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Symptoms Summary"
+df |>
+  select(
+    neck_symptoms,
+    neck_lump,
+    compressive_symptoms,
+    thyroid_dysfunction,
+    no_symptoms) |>
+  gtsummary::tbl_summary() |>
+  gtsummary::modify_caption("Summary of symptoms on presentation")
+
+```-->
+
+<!--```{r}
+#| label: tbl-nodule
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Nodule Assessment"
+df |>
+  select(
+    asa_score,
+    nodule_fna_thy,
+    core_biopsy) |>
+  gtsummary::tbl_summary() |>
+  gtsummary::modify_caption("Nodule Assessment")
+
+```-->
+
+
+
+<!--```{r}
 #| label: tbl-scans
 #| eval: true
 #| echo: false
@@ -322,14 +385,14 @@ df |>
   mri_neck) |>
   gtsummary::tbl_summary() |>
   gtsummary::modify_caption("Scans")
-```
+```-->
 
 ```{r}
 #| label: tbl-patient-characteristics-gtsummary
 #| eval: true
 #| echo: false
 #| warning: false
-#| tbl-caption: "Previous neck irradiation"
+#| tbl-caption: "Baseline characteristics and referral source of included patients"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
 patient_characteristics <- df |>
   dplyr::ungroup() |>
@@ -348,7 +411,7 @@ gtsummary::tbl_summary(
   percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
   missing="no"           # Exclude missing, options are "no", "ifany" and "always"
   ) |>
-  gtsummary::modify_caption("Previous neck irradiation")
+  gtsummary::modify_caption("Baseline characteristics and referral source of included patients")
 patient_characteristics
 
 ```
@@ -356,13 +419,14 @@ patient_characteristics
 <!-- This is an example of how to have comments in Markdown files, if you want to comment out a section start with the -->
 <!-- characters at the beinging of these lines and end with those at the end. -->
 <!-- For options to inline_text() see https://www.danieldsjoberg.com/gtsummary/reference/inline_text.tbl_summary.html -->
-Summary statistics are presented in @tbl-patient-characteristics-gtsummary. The mean and standard deviation of the age of
-patients was `r gtsummary::inline_text(patient_characteristics, variable="age", level="Mean (SD)")`.
-Height and/or weight were only available for
+The baseline characteristics and referral source of included patients is presented in @tbl-patient-characteristics-gtsummary.
+<!--The mean and standard deviation of the age of
+patients was `r gtsummary::inline_text(patient_characteristics, variable="age", level="Mean (SD)")`-->
+<!--Height and/or weight were only available for
 `r gtsummary::inline_text(patient_characteristics, variable="bmi", level="N")` patients, of these the mean and standard
 deviation of BMI in patients was  `r gtsummary::inline_text(patient_characteristics, variable="bmi", level="Mean (SD)")`
 whilst the median and inter-quartile range was
-`r gtsummary::inline_text(patient_characteristics, variable="bmi", level="Median (IQR)")`.
+`r gtsummary::inline_text(patient_characteristics, variable="bmi", level="Median (IQR)")`-->
 
 <!-- The most common ASA Score was -->
 <!-- Grade II (n = `r gtsummary::inline_text(patient_characteristics, variable="asa_score", level="II")`) -->
