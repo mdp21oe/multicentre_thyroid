@@ -489,13 +489,16 @@ neck_symptoms_imaging <- df |>
 neck_symptoms_imaging
 ```
 
-Neck symptoms were recorded in `r gtsummary::inline_text(neck_symptoms_imaging, variable="neck_symptoms")` of cases.
-Incidental imaging was performed in
-`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")` cases of which
-Ultrasound (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="Ultrasound")`)
-and CT (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="CT")`)
+Neck symptoms and images are summarised in @tbl-neck-symptoms-imaging-gtsummary Neck symptoms were recorded in
+`r gtsummary::inline_text(neck_symptoms_imaging, variable="neck_symptoms")`
+of cases and incidental imaging was performed in
+`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")`
+cases of which  Ultrasound
+(`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="Ultrasound")`) and CT
+(`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="CT")`)
 were the most common. Clinical assessment identified the most common nodule type to be single
 (`r gtsummary::inline_text(neck_symptoms_imaging, variable="clinical_assessment", level="Single thyroid node")`).
+
 
 
 <!-- ```{r} -->
