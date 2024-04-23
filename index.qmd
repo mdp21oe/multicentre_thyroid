@@ -307,83 +307,8 @@ select(clinic_recruiting) |>
   gtsummary::modify_caption("Referring Clinics")
 ```
 
-<!--```{r}
-#| label: tbl-continuous_summary
-#| eval: true
-#| echo: false
-#| warning: false
-#| tbl-caption: "Continuous variable summary"
-df |>
-  select(age,
-    bmi,
-    neck_symptoms,
-    nodule_maxmimum_diameter_mm) |>
-  gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Summary of Age, BMI and Nodule Diameter (mm)")-->
 
-```
-
-<!--```{r}
-#| label: fig-age
-#| eval: true
-#| echo: false
-#| warning: false
-#| fig-caption: "Age distribution"
-df |>
-  ggplot(aes(age)) +
-  geom_histogram() +
-  labs(x = "Age (years)", y = "N")-->
-
-```
-
-<!--```{r}
-#| label: tbl-symptoms
-#| eval: true
-#| echo: false
-#| warning: false
-#| tbl-caption: "Symptoms Summary"
-df |>
-  select(
-    neck_symptoms,
-    neck_lump,
-    compressive_symptoms,
-    thyroid_dysfunction,
-    no_symptoms) |>
-  gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Summary of symptoms on presentation")-->
-
-```
-
-<!--```{r}
-#| label: tbl-nodule
-#| eval: true
-#| echo: false
-#| warning: false
-#| tbl-caption: "Nodule Assessment"
-df |>
-  select(
-    asa_score,
-    nodule_fna_thy,
-    core_biopsy) |>
-  gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Nodule Assessment")-->
-
-```
-
-<!--```{r}
-#| label: fig-asa_nodule
-#| eval: true
-#| echo: false
-#| warning: false
-#| fig-caption: "ASA Nodule classification"
-df |>
-  ggplot(aes(asa_score, fill=asa_score)) +
-  geom_bar() +
-  labs(x = "ASA Score", y = "N") +
-  theme(legend.position="none")-->
-```
-
-<!--```{r}
+```{r}
 #| label: tbl-scans
 #| eval: true
 #| echo: false
@@ -396,7 +321,7 @@ df |>
   ct_neck,
   mri_neck) |>
   gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Scans")-->
+  gtsummary::modify_caption("Scans")
 ```
 
 ```{r}
