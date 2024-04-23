@@ -28,20 +28,37 @@ author:
     corresponding: false
     roles: Collaborators
     affiliations:
+abstract: |
+  ### Introduction {.unnumbered}
 
+  The incidence, modes of presentation, and distribution of pathology of thyroid nodules in the United Kingdom (UK) is
+  not well characterised. The aim of the study is to understand the epidemiology and management pathways of thyroid
+  nodules in the UK.
+
+  ### Methods {.unnumbered}
+
+  This was a retrospective study over a 6-month period. We included all consecutive adult patients referred for
+  investigation of a thyroid nodule.
+
+  ### Results {.unnumbered}
+
+  A total of 12 centres including 573 patients with median age of 54 years were included. Incidental detection of
+  thyroid nodule was reported in 31.6%. The U classifications were: U1 (0.5%), U2 (45.6%), U3 (44.4%), U4 (7.2%), U5
+  (2.3%). Of the patients who had FNAC, the Thy classifications were: Thy1 (21.9%), Thy2 (37.5%), Thy3a (10.3%), Thy3f
+  (20.9%), Thy4 (4.7%), Thy5 (4.7%). Core biopsy was performed in 8 (1.4%) patients. The initial management was
+  thyroidectomy in 23.6% and conservative management in 72.8%. In the latter group, 55.8% were offered routine review in
+  a median period of 24 weeks and 15% had a change in the initial management strategy. The postoperative pathology was
+  malignant in 41.3% of patients. Age, BMI, previous neck irradiation, incidental nodule, and rapid growth factors were
+  not significantly associated with thyroid cancer. The proportion of cancer in ‘Thy3a’ and ‘Thy3f’ nodules were 42.9%
+  and 47.9% respectively.
+
+  ### Conclusion {.unnumbered}
+
+  Around 60% of thyroid nodules subjected to diagnostic thyroidectomy were benign. Better preoperative predictors and
+  tools to differentiate between benign and malignat thyroid nodules are needed.
 keywords:
   - Thyroid nodules
   - Thyroid cancer
-abstract: |
-### Introduction The incidence, modes of presentation, and distribution of pathology of thyroid nodules in the United
-##Kingdom (UK) is not well characterised. The aim of the study is to understand the epidemiology and management pathways of thyroid nodules in the UK.
-## Methods
-##This was a retrospective study over a 6-month period. We included all consecutive adult patients referred for investigation of a thyroid nodule.
-## Results
-## A total of 12 centres including 573 patients with median age of 54 years were included. Incidental detection of thyroid nodule was reported in 31.6%. The U classifications were: U1 (0.5%), U2 (45.6%), U3 (44.4%), U4 (7.2%), U5 (2.3%). Of the patients who had FNAC, the Thy classifications were: Thy1 (21.9%), Thy2 (37.5%), Thy3a (10.3%), Thy3f (20.9%), Thy4 (4.7%), Thy5 (4.7%). Core biopsy was performed in 8 (1.4%) patients. The initial management was thyroidectomy in 23.6% and conservative management in 72.8%. In the latter group, 55.8% were offered routine review in a median period of 24 weeks and 15% had a change in the initial management strategy. The postoperative pathology was malignant in 41.3% of patients. Age, BMI, previous neck irradiation, incidental nodule, and rapid growth factors were not significantly associated with thyroid cancer. The proportion of cancer in ‘Thy3a’ and ‘Thy3f’ nodules were 42.9% and 47.9% respectively.
-##Conclusion
-##Around 60% of thyroid nodules subjected to diagnostic thyroidectomy were benign. Better preoperative predictors and tools to differentiate between benign and malignat thyroid nodules are needed.
-
 plain-language-summary: |
     This was a multicentre study to analyse the presentation of thyroid nodules in the United Kingdom (UK). A total of 573 patients with thyroid nodules were included across 12 sites. Around 20% of patients underwent diagnostic thyroidectomy.Of the patients who underwent diagnostic thyroidectomy, around 60% had a benign pathology. This highlights the need for better preoperative factors and tools to differentiate between benign and malignant thyroid nodules.
 key-points:
@@ -248,9 +265,6 @@ bmi_recoded <- nrow(df$bmi)
 sites <- df %>% select(data_access_group) %>% tbl_summary()
 
 referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_referral) %>% tbl_summary()
-
-
-
 ```
 
 
@@ -382,16 +396,16 @@ df |>
   mri_neck) |>
   gtsummary::tbl_summary() |>
   gtsummary::modify_caption("Scans")
-
 ```
 
 ```{r}
-#| label: tbl-neck-irradiation-gtsummary
+#| label: tbl-patient-characteristics-gtsummary
 #| eval: true
 #| echo: false
 #| warning: false
 #| tbl-caption: "Previous neck irradiation"
-neck_irradiation_gtsummary <- df |>
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+patient_characteristics <- df |>
   dplyr::ungroup() |>
   dplyr::select(c(
     "age", "bmi", "referral_source", "two_week_wait_referral", "smoking_status",
@@ -404,120 +418,258 @@ gtsummary::tbl_summary(
     "{mean} ({sd})",
     "{median} ({p25}, {p75})"
   #  "{min}, {max}"
-))
-neck_irradiation_gtsummary
+  ),
+  percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+  missing="no"           # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("Previous neck irradiation")
+patient_characteristics
 
 ```
 
 <!-- This is an example of how to have comments in Markdown files, if you want to comment out a section start with the -->
 <!-- characters at the beinging of these lines and end with those at the end. -->
-Summary statistics are presented in @tbl-neck-irradiation-gtsummary. The mean and standard deviation of the age of
-patients was `r inline_text(neck_irradiation_gtsummary, variable="age", level="Mean (SD)")`.
-Height and/or weight were only available for `r inline_text(neck_irradiation_gtsummary, variable="bmi",
-level="N")` patietns, of these the mean and standard deviation of BMI in patients was `r
-inline_text(neck_irradiation_gtsummary, variable="bmi", level="Mean (SD)")` whilst the median and inter-quartile range
-was  `r inline_text(neck_irradiation_gtsummary, variable="bmi", level="Median (IQR)")`
+<!-- For options to inline_text() see https://www.danieldsjoberg.com/gtsummary/reference/inline_text.tbl_summary.html -->
+Summary statistics are presented in @tbl-patient-characteristics-gtsummary. The mean and standard deviation of the age of
+patients was `r gtsummary::inline_text(patient_characteristics, variable="age", level="Mean (SD)")`.
+Height and/or weight were only available for
+`r gtsummary::inline_text(patient_characteristics, variable="bmi", level="N")` patients, of these the mean and standard
+deviation of BMI in patients was  `r gtsummary::inline_text(patient_characteristics, variable="bmi", level="Mean (SD)")`
+whilst the median and inter-quartile range was
+`r gtsummary::inline_text(patient_characteristics, variable="bmi", level="Median (IQR)")`.
+
+<!-- The most common ASA Score was -->
+<!-- Grade II (n = `r gtsummary::inline_text(patient_characteristics, variable="asa_score", level="II")`) -->
+<!-- with Grade I being the second most common -->
+<!-- (n = `r gtsummary::inline_text(patient_characteristics, variable="asa_score", level="I")`). -->
+
+<!-- ```{r} -->
+<!-- #| label: tbl-neck-irradiation-tableone -->
+<!-- #| eval: false -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #| tbl-caption: "Previous neck irradiation" -->
+<!-- p_charac <- select(df, c( -->
+<!--   "age", "bmi", "referral_source", "two_week_wait_referral", "smoking_status", -->
+<!--   "previous_neck_irradiation", "asa_score" -->
+<!-- )) -->
+<!-- CreateTableOne( -->
+<!--   data = p_charac, vars = c( -->
+<!--     "age", "bmi", -->
+<!--     "referral_source", -->
+<!--     "two_week_wait_referral", -->
+<!--     "smoking_status", -->
+<!--     "previous_neck_irradiation", -->
+<!--     "asa_score" -->
+<!--   ), -->
+<!--   factorVars = c("previous_neck_irradiation") -->
+<!-- ) -->
+<!-- ``` -->
+
 
 ```{r}
-#| label: tbl-neck-irradiation-tableone
+#| label: tbl-neck-symptoms-imaging-gtsummary
 #| eval: true
 #| echo: false
 #| warning: false
-#| tbl-caption: "Previous neck irradiation"
-p_charac <- select(df, c(
-  "age", "bmi", "referral_source", "two_week_wait_referral", "smoking_status",
-  "previous_neck_irradiation", "asa_score"
-))
-CreateTableOne(
-  data = p_charac, vars = c(
-    "age", "bmi",
-    "referral_source",
-    "two_week_wait_referral",
-    "smoking_status",
-    "previous_neck_irradiation",
-    "asa_score"
-  ),
-  factorVars = c("previous_neck_irradiation")
-)
-```
-
-
-```{r}
-c_charac <- select(df, c(
-  "neck_symptoms", "incidental_imaging", "incidental_imaging_type",
-  "abnormal_thyroid_function",
-  "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
-  "compressive_symptoms", "clinical_assessment", "retrosternal",
-  "palpable_lymphadenopathy", "nodule_rapid_growth"
-))
-CreateTableOne(
-  data = c_charac, vars = c(
-    "neck_symptoms", "incidental_imaging",
-    "incidental_imaging_type",
-    "abnormal_thyroid_function",
-    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
-    "compressive_symptoms", "clinical_assessment", "retrosternal",
+#| tbl-caption: "Neck Symptoms and Imaging"
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+neck_symptoms_imaging <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c(
+    "neck_symptoms", "incidental_imaging", "incidental_imaging_type", "abnormal_thyroid_function", "hyperthyroidism",
+    "hypothyroidism", "no_symptoms", "neck_lump", "compressive_symptoms", "clinical_assessment", "retrosternal",
     "palpable_lymphadenopathy", "nodule_rapid_growth"
-  ),
-  factorVars = c(
-    "neck_symptoms","incidental_imaging",
-    "incidental_imaging_type",
-    "abnormal_thyroid_function",
-    "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump",
-    "compressive_symptoms", "clinical_assessment", "retrosternal",
-    "palpable_lymphadenopathy", "nodule_rapid_growth"
-  )
-)
+  )) |>
+  gtsummary::tbl_summary(
+    percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+    missing="no"           # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("Neck Symptoms and Imaging")
+neck_symptoms_imaging
 ```
+
+Neck symptoms were recorded in `r gtsummary::inline_text(neck_symptoms_imaging, variable="neck_symptoms")` of cases.
+Incidental imaging was performed in
+`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")` cases of which
+Ultrasound (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="Ultrasound")`)
+and CT (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="CT")`)
+were the most common. Clinical assessment identified the most common nodule type to be single
+(`r gtsummary::inline_text(neck_symptoms_imaging, variable="clinical_assessment", level="Single thyroid node")`).
+
+
+<!-- ```{r} -->
+<!-- #| label: tbl-neck-symptoms-imaging-tableone -->
+<!-- #| eval: false -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #| tbl-caption: "Neck Symptoms and Imaging" -->
+<!-- c_charac <- select(df, c( -->
+<!--   "neck_symptoms", "incidental_imaging", "incidental_imaging_type", -->
+<!--   "abnormal_thyroid_function", -->
+<!--   "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump", -->
+<!--   "compressive_symptoms", "clinical_assessment", "retrosternal", -->
+<!--   "palpable_lymphadenopathy", "nodule_rapid_growth" -->
+<!-- )) -->
+<!-- CreateTableOne( -->
+<!--   data = c_charac, vars = c( -->
+<!--     "neck_symptoms", "incidental_imaging", -->
+<!--     "incidental_imaging_type", -->
+<!--     "abnormal_thyroid_function", -->
+<!--     "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump", -->
+<!--     "compressive_symptoms", "clinical_assessment", "retrosternal", -->
+<!--     "palpable_lymphadenopathy", "nodule_rapid_growth" -->
+<!--   ), -->
+<!--   factorVars = c( -->
+<!--     "neck_symptoms","incidental_imaging", -->
+<!--     "incidental_imaging_type", -->
+<!--     "abnormal_thyroid_function", -->
+<!--     "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump", -->
+<!--     "compressive_symptoms", "clinical_assessment", "retrosternal", -->
+<!--     "palpable_lymphadenopathy", "nodule_rapid_growth" -->
+<!--   ) -->
+<!-- ) -->
+<!-- ``` -->
+
 
 ```{r}
-u_charac <- select(df, c(
-  "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage",
-  "nodule_ultrasound_lymphadenopathy"))
-CreateTableOne(
-  data = u_charac, vars = c(
-    "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage",
-    "nodule_ultrasound_lymphadenopathy"),
-  factorVars = c(
-    "nodule_ultrasound_description", "nodule_ultrasound_u_stage", "nodule_ultrasound_lymphadenopathy")
-)
+#| label: tbl-ultrasound-investigations-gtsummary
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Ultrasound investigations."
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+ultrasound_investigations <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(
+    c("nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage",
+      "nodule_ultrasound_lymphadenopathy")) |>
+  gtsummary::tbl_summary(
+    percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+    missing="no"           # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("Ultrasound Investigations.")
+ultrasound_investigations
 ```
+
+<!-- ```{r} -->
+<!-- #| label: tbl-ultrasound-investigations-tableone -->
+<!-- #| eval: false -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #| tbl-caption: "Ultrasound investigations." -->
+<!-- u_charac <- select(df, c( -->
+<!--   "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage", -->
+<!--   "nodule_ultrasound_lymphadenopathy")) -->
+<!-- CreateTableOne( -->
+<!--   data = u_charac, vars = c( -->
+<!--     "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage", -->
+<!--     "nodule_ultrasound_lymphadenopathy"), -->
+<!--   factorVars = c( -->
+<!--     "nodule_ultrasound_description", "nodule_ultrasound_u_stage", "nodule_ultrasound_lymphadenopathy") -->
+<!-- ) -->
+<!-- ``` -->
 
 ```{r}
-
-biopsy <- select(df, c(
-  "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy"))
-CreateTableOne(
-  data = biopsy, vars = c(
-    "nodule_fna", "nodule_fna_result", "nodule_fna_thy",
-    "core_biopsy"),
-  factorVars = c(
-    "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy"))
+#| label: tbl-fna-biopsy-investigations-gtsummary
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "FNA and Biopsy investigations."
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+fna_biopsy_investigations <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy")) |>
+  gtsummary::tbl_summary(
+    percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+    missing="no"           # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("FNA and Bopisy investigations.")
+fna_biopsy_investigations
 ```
+
+<!-- ```{r} -->
+<!-- #| label: tbl-fna-biopsy-investigations-tableone -->
+<!-- #| eval: false -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #| tbl-caption: "FNA and Biopsy investigations." -->
+<!-- biopsy <- select(df, c( -->
+<!--   "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy")) -->
+<!-- CreateTableOne( -->
+<!--   data = biopsy, vars = c( -->
+<!--     "nodule_fna", "nodule_fna_result", "nodule_fna_thy", -->
+<!--     "core_biopsy"), -->
+<!--   factorVars = c( -->
+<!--     "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy")) -->
+<!-- ``` -->
 
 ```{r}
-management <- select(df, c(
-  "initial_management_decision", "routine_review_offered",
-  "routine_review_offered_interval_weeks", "routine_review_ultrasound",
-  "routine_review_fna", "routine_review_management_strategy_review",
-  "routine_review_management_revised", "routine_review_management_revised_reason",
-  "routine_review_confirm_management_plan", "routine_review_patient_signposting_information",
-  "thyroid_surgery"
-))
-tone <- CreateTableOne(data = management, vars = c(
-  "initial_management_decision", "routine_review_offered",
-  "routine_review_offered_interval_weeks", "routine_review_ultrasound",
-  "routine_review_fna", "routine_review_management_strategy_review",
-  "routine_review_management_revised",
-  "routine_review_management_revised_reason",
-  "routine_review_confirm_management_plan",
-  "routine_review_patient_signposting_information",
-  "thyroid_surgery"
-))
-
+#| label: tbl-management-review-gtsummary
+#| eval: false
+#| echo: false
+#| warning: false
+#| tbl-caption: "Management and Review strategies."
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+management_review <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(
+    c("initial_management_decision", "routine_review_offered", "routine_review_offered_interval_weeks",
+      "routine_review_ultrasound", "routine_review_fna", "routine_review_management_strategy_review",
+      "routine_review_management_revised", "routine_review_management_revised_reason",
+      "routine_review_confirm_management_plan", "routine_review_patient_signposting_information", "thyroid_surgery"
+  )) |>
+  gtsummary::tbl_summary(
+    percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+    missing="no"           # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("Management and Review strategies.")
+management_review
 ```
 
+<!-- ```{r} -->
+<!-- #| label: tbl-management-review-tableone -->
+<!-- #| eval: false -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #| tbl-caption: "Management and Review strategies." -->
+<!-- management <- select(df, c( -->
+<!--   "initial_management_decision", "routine_review_offered", -->
+<!--   "routine_review_offered_interval_weeks", "routine_review_ultrasound", -->
+<!--   "routine_review_fna", "routine_review_management_strategy_review", -->
+<!--   "routine_review_management_revised", "routine_review_management_revised_reason", -->
+<!--   "routine_review_confirm_management_plan", "routine_review_patient_signposting_information", -->
+<!--   "thyroid_surgery" -->
+<!-- )) -->
+<!-- tone <- CreateTableOne(data = management, vars = c( -->
+<!--   "initial_management_decision", "routine_review_offered", -->
+<!--   "routine_review_offered_interval_weeks", "routine_review_ultrasound", -->
+<!--   "routine_review_fna", "routine_review_management_strategy_review", -->
+<!--   "routine_review_management_revised", -->
+<!--   "routine_review_management_revised_reason", -->
+<!--   "routine_review_confirm_management_plan", -->
+<!--   "routine_review_patient_signposting_information", -->
+<!--   "thyroid_surgery" -->
+<!-- )) -->
+<!-- ``` -->
 
+
+```{r}
+#| label: tbl-final-pathology-gtsummary
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Final Pathology."
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+final_pathology <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("final_pathology", "nodule_fna", "age", "bmi", "smoking_status", "asa_score")) |>
+    gtsummary::tbl_summary(by="final_pathology") |>
+  add_p() |>
+  gtsummary::modify_caption("Final Pathology.")
+final_pathology
+print(colnames(final_pathology))
+```
 
 ### Patient characteristics
 
