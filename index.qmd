@@ -181,7 +181,7 @@ pathology. Malignant nodules were confirmed on histology.
 ### Ethical consideration
 
 Ethical approval was obtained from the health research authority (HRA) through the integrated research application
-system (IRAS) to undertake this study (19/HRA/5351)
+system (IRAS) to undertake this study (19/HRA/5351).
 
 
 ```{r}
@@ -273,13 +273,14 @@ referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_refe
 
 A total of `r n_centre` centres were included in this study, with between `r min(by_centre)` and `r max(by_centre)`
 patients, contributing a total of `r n_obs` patients (see @tbl-recruitment). The mean (SD) of patients include
-was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) (see @tbl-continuous_summary).  Patients were identified
+was `r mean(df$age, na.rm=TRUE)` (`r sd(df$age, na.rm=TRUE)`) 
+<!--(see @tbl-continuous_summary).  Patients were identified
 from a range of clinics with the majority coming from Ear, Nose and Throat (ENT) (n=`r clinic_recruiting["ENT"]`; `r
 100 * (clinic_recruiting["ENT"] / n_obs) `%). The second most common clinic was General Surgery (n=`r
 clinic_recruiting["General surgery (including endocrine surgery)"]`;`r 100 * (clinic_recruiting["General surgery
 (including endocrine surgery)"] / n_obs)`%). See table for the distribution of clinics @tbl-clinics. Sources of referral
 for thyroid nodules were GP and Secondary care in 423 (74.0%) and 150 (26.0%) respectively. Nodules were referred
-through the NHS as two-week wait (2WW) cancer pathway in 52.4% of cases.
+through the NHS as two-week wait (2WW) cancer pathway in 52.4% of cases-->
 
 
 ```{r}
@@ -306,7 +307,7 @@ select(clinic_recruiting) |>
   gtsummary::modify_caption("Referring Clinics")
 ```
 
-```{r}
+<!--```{r}
 #| label: tbl-continuous_summary
 #| eval: true
 #| echo: false
@@ -318,11 +319,11 @@ df |>
     neck_symptoms,
     nodule_maxmimum_diameter_mm) |>
   gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Summary of Age, BMI and Nodule Diameter (mm)")
+  gtsummary::modify_caption("Summary of Age, BMI and Nodule Diameter (mm)")-->
 
 ```
 
-```{r}
+<!--```{r}
 #| label: fig-age
 #| eval: true
 #| echo: false
@@ -331,11 +332,11 @@ df |>
 df |>
   ggplot(aes(age)) +
   geom_histogram() +
-  labs(x = "Age (years)", y = "N")
+  labs(x = "Age (years)", y = "N")-->
 
 ```
 
-```{r}
+<!--```{r}
 #| label: tbl-symptoms
 #| eval: true
 #| echo: false
@@ -349,11 +350,11 @@ df |>
     thyroid_dysfunction,
     no_symptoms) |>
   gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Summary of symptoms on presentation")
+  gtsummary::modify_caption("Summary of symptoms on presentation")-->
 
 ```
 
-```{r}
+<!--```{r}
 #| label: tbl-nodule
 #| eval: true
 #| echo: false
@@ -365,11 +366,11 @@ df |>
     nodule_fna_thy,
     core_biopsy) |>
   gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Nodule Assessment")
+  gtsummary::modify_caption("Nodule Assessment")-->
 
 ```
 
-```{r}
+<!--```{r}
 #| label: fig-asa_nodule
 #| eval: true
 #| echo: false
@@ -379,10 +380,10 @@ df |>
   ggplot(aes(asa_score, fill=asa_score)) +
   geom_bar() +
   labs(x = "ASA Score", y = "N") +
-  theme(legend.position="none")
+  theme(legend.position="none")-->
 ```
 
-```{r}
+<!--```{r}
 #| label: tbl-scans
 #| eval: true
 #| echo: false
@@ -395,7 +396,7 @@ df |>
   ct_neck,
   mri_neck) |>
   gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Scans")
+  gtsummary::modify_caption("Scans")-->
 ```
 
 ```{r}
