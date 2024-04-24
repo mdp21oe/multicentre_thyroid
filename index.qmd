@@ -553,7 +553,17 @@ in @tbl-ultrasound-investigations-gtsummary. BTA U classification was the method
 Majority of patients did not have TIRADS reported, thus was not evaluated. Furthermore, elastography was not performed in any patient.
 
 ```{r}
-
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "BTA U stage by centre"
+u_centre <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("data_access_group", "nodule_ultrasound_u_stage")) |>
+    gtsummary::tbl_summary(by="nodule_ultrasound_u_stage") |>
+  gtsummary::modify_caption("BTA U stage by centre")
+u_centre
+print(colnames(u_centre))
 ```
 
 <!-- ```{r} -->
