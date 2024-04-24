@@ -579,19 +579,21 @@ Majority of patients did not have TIRADS reported, thus was not evaluated. Furth
 #| eval: true
 #| echo: false
 #| warning: false
-#| tbl-caption: "FNA and Biopsy investigations."
+#| tbl-caption: "Cytology results in patients who underwent FNA"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
 fna_biopsy_investigations <- df |>
   dplyr::ungroup() |>
-  dplyr::select(c("nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy")) |>
+  dplyr::select(c("nodule_fna", "nodule_fna_thy", "core_biopsy")) |>
   gtsummary::tbl_summary(
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
     missing="no"           # Exclude missing, options are "no", "ifany" and "always"
   ) |>
-  gtsummary::modify_caption("FNA and Bopisy investigations.")
+  gtsummary::modify_caption("Cytology results in patients who underwent FNA")
 fna_biopsy_investigations
 ```
-
+A total of `r gtsummary::inline_text(fna_biopsy_investigations, variable="nodule_fna")` patients had FNA done to
+evaluate the thyroid nodules. The distribution of the reported BTA Thy classification is presented in
+@tbl-fna-biopsy-investigations-gtsummary. The Bethseda system for reporting thyroid cytology was not used in any of the included centre.
 <!-- ```{r} -->
 <!-- #| label: tbl-fna-biopsy-investigations-tableone -->
 <!-- #| eval: false -->
