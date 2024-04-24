@@ -420,6 +420,7 @@ patient_characteristics
 <!-- characters at the beinging of these lines and end with those at the end. -->
 <!-- For options to inline_text() see https://www.danieldsjoberg.com/gtsummary/reference/inline_text.tbl_summary.html -->
 The baseline characteristics and referral source of included patients is presented in @tbl-patient-characteristics-gtsummary.
+
 <!--The mean and standard deviation of the age of
 patients was `r gtsummary::inline_text(patient_characteristics, variable="age", level="Mean (SD)")`-->
 <!--Height and/or weight were only available for
@@ -462,32 +463,30 @@ whilst the median and inter-quartile range was
 #| eval: true
 #| echo: false
 #| warning: false
-#| tbl-caption: "Neck Symptoms and Imaging"
+#| tbl-caption: "Clinical presentations and assessments of the study population"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
 neck_symptoms_imaging <- df |>
   dplyr::ungroup() |>
   dplyr::select(c(
-    "neck_symptoms", "incidental_imaging", "incidental_imaging_type", "abnormal_thyroid_function", "hyperthyroidism",
-    "hypothyroidism", "no_symptoms", "neck_lump", "compressive_symptoms", "clinical_assessment", "retrosternal",
-    "palpable_lymphadenopathy", "nodule_rapid_growth"
+    "neck_symptoms", "neck_lump", "compressive_symptoms", "nodule_rapid_growth",  "hyperthyroidism", "hypothyroidism", 
+    "clinical_assessment", "palpable_lymphadenopathy", "retrosternal", "incidental_imaging", "incidental_imaging_type" 
   )) |>
   gtsummary::tbl_summary(
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
     missing="no"           # Exclude missing, options are "no", "ifany" and "always"
   ) |>
-  gtsummary::modify_caption("Neck Symptoms and Imaging")
+  gtsummary::modify_caption("Clinical presentations and assessments of the study population")
 neck_symptoms_imaging
 ```
 
-Neck symptoms and images are summarised in @tbl-neck-symptoms-imaging-gtsummary Neck symptoms were recorded in
-`r gtsummary::inline_text(neck_symptoms_imaging, variable="neck_symptoms")`
-of cases and incidental imaging was performed in
-`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")`
-cases of which  Ultrasound
+The modes of clinical presentation are presented in @tbl-neck-symptoms-imaging-gtsummary. 
+A total of `r gtsummary::inline_text(neck_symptoms_imaging, variable="neck_symptoms")` patients presented with neck symptoms.
+Thyroid nodules were incidental detected on imaging in `r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")` patients. Ultrasound neck for unrelated pathology was the commonest imaging modality for incidental detection, followed by CT.
+<!---cases of which  Ultrasound
 (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="Ultrasound")`) and CT
 (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="CT")`)
 were the most common. Clinical assessment identified the most common nodule type to be single
-(`r gtsummary::inline_text(neck_symptoms_imaging, variable="clinical_assessment", level="Single thyroid node")`).
+(`r gtsummary::inline_text(neck_symptoms_imaging, variable="clinical_assessment", level="Single thyroid node")`)-->
 
 
 
