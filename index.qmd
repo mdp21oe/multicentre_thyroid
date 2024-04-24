@@ -265,6 +265,7 @@ bmi_recoded <- nrow(df$bmi)
 sites <- df %>% select(data_access_group) %>% tbl_summary()
 
 referral <- df %>% select(clinic_recruiting, referral_source, two_week_wait_referral) %>% tbl_summary()
+
 ```
 
 
@@ -481,7 +482,10 @@ neck_symptoms_imaging
 
 The modes of clinical presentation are presented in @tbl-neck-symptoms-imaging-gtsummary. 
 A total of `r gtsummary::inline_text(neck_symptoms_imaging, variable="neck_symptoms")` patients presented with neck symptoms.
-Thyroid nodules were incidental detected on imaging in `r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")` patients. Ultrasound neck for unrelated pathology was the commonest imaging modality for incidental detection, followed by CT.
+Thyroid nodules were incidental detected on imaging in
+`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")` patients. Ultrasound neck for unrelated
+pathology was the commonest imaging modality for incidental detection, followed by CT.
+
 <!---cases of which  Ultrasound
 (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="Ultrasound")`) and CT
 (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="CT")`)
@@ -529,7 +533,7 @@ were the most common. Clinical assessment identified the most common nodule type
 #| eval: true
 #| echo: false
 #| warning: false
-#| tbl-caption: "Ultrasound investigations."
+#| tbl-caption: "Features of thyroid nodules and U stage on ultrasound scan"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
 ultrasound_investigations <- df |>
   dplyr::ungroup() |>
@@ -540,8 +544,16 @@ ultrasound_investigations <- df |>
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
     missing="no"           # Exclude missing, options are "no", "ifany" and "always"
   ) |>
-  gtsummary::modify_caption("Ultrasound Investigations.")
+  gtsummary::modify_caption("Features of thyroid nodules and U stage on ultrasound scan")
 ultrasound_investigations
+```
+Most patients had ultrasound to evaluate for thyroid nodule either prior to or following initial assessment in 
+secondary care. The descriptions of the thyroid nodule on ultrasound is presented
+in @tbl-ultrasound-investigations-gtsummary. BTA U classification was the methods generally used to grade the nodules.
+Majority of patients did not have TIRADS reported, thus was not evaluated. Furthermore, elastography was not performed in any patient.
+
+```{r}
+
 ```
 
 <!-- ```{r} -->
