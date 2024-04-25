@@ -643,6 +643,24 @@ management_review <- df |>
 management_review
 ```
 
+```{r}
+#| label: thy-category-histo
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Thy category and histological diagnosis"
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+thy_class_histo <- df |>
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
+           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|>
+  dplyr::ungroup() |>
+  dplyr::select(c("nodule_fna_thy", "final_pathology")) |>
+    gtsummary::tbl_summary(by="nodule_fna_thy") |>
+  gtsummary::modify_caption("Thy category and histological diagnosis")
+thy_class_histo
+print(colnames(thy_class_histo))
+```
+
 <!-- ```{r} -->
 <!-- #| label: tbl-management-review-tableone -->
 <!-- #| eval: false -->
