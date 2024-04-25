@@ -644,6 +644,25 @@ management_review
 ```
 
 ```{r}
+#| label: u-stage-histo
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "U stage and histological diagnosis"
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+u_stage_histo <- df |>
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
+           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|> 
+  dplyr::ungroup() |>
+  dplyr::select(c("nodule_ultrasound_u_stage", "final_pathology")) |> 
+    gtsummary::tbl_summary(by="nodule_ultrasound_u_stage") |>
+  gtsummary::modify_caption("Thy category and histological diagnosis")
+u_stage_histo
+print(colnames(u_stage_histo))
+```
+
+
+```{r}
 #| label: thy-category-histo
 #| eval: true
 #| echo: false
@@ -660,6 +679,7 @@ thy_class_histo <- df |>
 thy_class_histo
 print(colnames(thy_class_histo))
 ```
+
 
 <!-- ```{r} -->
 <!-- #| label: tbl-management-review-tableone -->
