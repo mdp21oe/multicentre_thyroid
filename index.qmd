@@ -656,7 +656,7 @@ u_stage_histo <- df |>
   dplyr::ungroup() |>
   dplyr::select(c("nodule_ultrasound_u_stage", "final_pathology")) |> 
     gtsummary::tbl_summary(by="nodule_ultrasound_u_stage") |>
-  gtsummary::modify_caption("Thy category and histological diagnosis")
+  gtsummary::modify_caption("U stage and histological diagnosis")
 u_stage_histo
 print(colnames(u_stage_histo))
 ```
