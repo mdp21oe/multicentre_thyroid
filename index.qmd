@@ -604,6 +604,42 @@ fna_biopsy_investigations
 A total of `r gtsummary::inline_text(fna_biopsy_investigations, variable="nodule_fna")` patients had FNA done to
 evaluate the thyroid nodules. The distribution of the reported BTA Thy classification is presented in
 @tbl-fna-biopsy-investigations-gtsummary. The Bethseda system for reporting thyroid cytology was not used in any of the included centre.
+
+```{r}
+#| label: surgery-histo
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Surgery and diagnosis on histology"
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+surgery_histo <- df |>
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
+           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|> 
+  dplyr::ungroup() |>
+  dplyr::select(c("thyroid_surgery", "final_pathology")) |> 
+    gtsummary::tbl_summary(by="thyroid_surgery") |>
+  gtsummary::modify_caption("Surgery and diagnosis on histology")
+surgery_histo
+print(colnames(surgery_histo))
+```
+```{r}
+#| label: cancer-rates
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "Rates of thyroid cancer"
+# IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+cancer_rates <- df |>
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
+           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|> 
+  dplyr::ungroup() |>
+  dplyr::select(c("final_pathology")) |> 
+    gtsummary::tbl_summary(by=) |>
+  gtsummary::modify_caption("Rates of thyroid cancer")
+cancer_rates
+print(colnames(cancer_rates))
+```
+
 <!-- ```{r} -->
 <!-- #| label: tbl-fna-biopsy-investigations-tableone -->
 <!-- #| eval: false -->

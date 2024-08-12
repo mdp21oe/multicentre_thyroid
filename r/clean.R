@@ -700,6 +700,5 @@ var_labels <- c(
     thyroid_surgery = "Type of Thyroid surgery"
 )
 Hmisc::label(df) <- as.list(var_labels[match(names(df), names(var_labels))])
-
 ## Finally save the data
 saveRDS(df, file = paste(r_dir, "clean.rds", sep = "/"))
