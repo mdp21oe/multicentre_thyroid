@@ -699,6 +699,11 @@ var_labels <- c(
     routine_review_patient_signposting_information = "Patient signposted to appropriate patient support",
     thyroid_surgery = "Type of Thyroid surgery"
 )
+
+## the not reported in u class recorded to missing
+df$nodule_ultrasound_u_stage[df$nodule_ultrasound_u_stage == "Not reported"] <- NA
+
 Hmisc::label(df) <- as.list(var_labels[match(names(df), names(var_labels))])
 ## Finally save the data
 saveRDS(df, file = paste(r_dir, "clean.rds", sep = "/"))
+

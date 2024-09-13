@@ -566,6 +566,8 @@ u_centre
 print(colnames(u_centre))
 ```
 
+<!--u_centre-->
+
 <!-- ```{r} -->
 <!-- #| label: tbl-ultrasound-investigations-tableone -->
 <!-- #| eval: false -->
@@ -583,6 +585,22 @@ print(colnames(u_centre))
 <!--     "nodule_ultrasound_description", "nodule_ultrasound_u_stage", "nodule_ultrasound_lymphadenopathy") -->
 <!-- ) -->
 <!-- ``` -->
+
+```{r}
+#| eval: true
+#| echo: false
+#| warning: false
+#| tbl-caption: "FNA stage by centre"
+fna_centre <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("data_access_group", "nodule_fna_thy")) |>
+    gtsummary::tbl_summary(by="nodule_fna_thy") |>
+  gtsummary::modify_caption("FNA stage by centre")
+fna_centre
+print(colnames(fna_centre))
+```
+
+<!--fna_centre-->
 
 ```{r}
 #| label: tbl-fna-biopsy-investigations-gtsummary
@@ -622,6 +640,8 @@ surgery_histo <- df |>
 surgery_histo
 print(colnames(surgery_histo))
 ```
+
+
 ```{r}
 #| label: cancer-rates
 #| eval: true
@@ -696,7 +716,7 @@ u_stage_histo <- df |>
 u_stage_histo
 print(colnames(u_stage_histo))
 ```
-
+<!--u_stage_histo-->
 
 ```{r}
 #| label: thy-category-histo
@@ -716,6 +736,7 @@ thy_class_histo
 print(colnames(thy_class_histo))
 ```
 
+<!--thy_class_histo-->
 
 <!-- ```{r} -->
 <!-- #| label: tbl-management-review-tableone -->
@@ -742,6 +763,27 @@ print(colnames(thy_class_histo))
 <!--   "thyroid_surgery" -->
 <!-- )) -->
 <!-- ``` -->
+<!--
+summary(df$nodule_maxmimum_diameter_mm)
+table(df$nodule_fna)-->
+
+<!--```{r}
+nodule_size_fna <- df |>
+  mutate(nodule_size_category = case_when(
+    nodule_maxmimum_diameter_mm < 10 ~ "<10 mm",
+    nodule_maxmimum_diameter_mm >= 10 & nodule_maxmimum_diameter_mm <= 20 ~ "10-20 mm",
+    nodule_maxmimum_diameter_mm > 20 ~ ">20 mm"
+  ))
+# Tabulate by nodule_fna
+tabulated_data <- nodule_size_fna |>
+  group_by(nodule_fna, nodule_size_category) |>
+  summarise(count = n(), .groups = 'drop') |>
+  pivot_wider(names_from = nodule_size_category, values_from = count, values_fill = list(count = 0))
+
+# Print the result
+print(tabulated_data)
+-->
+```
 
 
 ```{r}
