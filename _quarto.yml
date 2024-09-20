@@ -1,8 +1,9 @@
 manuscript:
   article: index.qmd
-  
+
 execute:
   freeze: auto
+  cache: true
 
 format:
   html:

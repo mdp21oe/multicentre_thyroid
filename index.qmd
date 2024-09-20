@@ -307,36 +307,7 @@ select(clinic_recruiting) |>
   gtsummary::modify_caption("Referring Clinics")
 ```
 
-<!--```{r}
-#| label: tbl-continuous_summary
-#| eval: true
-#| echo: false
-#| warning: false
-#| tbl-caption: "Continuous variable summary"
-df |>
-  select(age,
-    bmi,
-    neck_symptoms,
-    nodule_maxmimum_diameter_mm) |>
-  gtsummary::tbl_summary() |>
-  gtsummary::modify_caption("Summary of Age, BMI and Nodule Diameter (mm)")
-
-```-->
-
-<!--```{r}
-#| label: fig-age
-#| eval: true
-#| echo: false
-#| warning: false
-#| fig-caption: "Age distribution"
-df |>
-  ggplot(aes(age)) +
-  geom_histogram() +
-  labs(x = "Age (years)", y = "N")
-
-```-->
-
-<!--```{r}
+```{r}
 #| label: tbl-symptoms
 #| eval: true
 #| echo: false
@@ -352,9 +323,9 @@ df |>
   gtsummary::tbl_summary() |>
   gtsummary::modify_caption("Summary of symptoms on presentation")
 
-```-->
+```
 
-<!--```{r}
+```{r}
 #| label: tbl-nodule
 #| eval: true
 #| echo: false
@@ -368,11 +339,11 @@ df |>
   gtsummary::tbl_summary() |>
   gtsummary::modify_caption("Nodule Assessment")
 
-```-->
+```
 
 
 
-<!--```{r}
+```{r}
 #| label: tbl-scans
 #| eval: true
 #| echo: false
@@ -386,11 +357,12 @@ df |>
   mri_neck) |>
   gtsummary::tbl_summary() |>
   gtsummary::modify_caption("Scans")
-```-->
+
+```
 
 ```{r}
 #| label: tbl-patient-characteristics-gtsummary
-#| eval: true
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "Baseline characteristics and referral source of included patients"
@@ -422,41 +394,6 @@ patient_characteristics
 <!-- For options to inline_text() see https://www.danieldsjoberg.com/gtsummary/reference/inline_text.tbl_summary.html -->
 The baseline characteristics and referral source of included patients is presented in @tbl-patient-characteristics-gtsummary.
 
-<!--The mean and standard deviation of the age of
-patients was `r gtsummary::inline_text(patient_characteristics, variable="age", level="Mean (SD)")`-->
-<!--Height and/or weight were only available for
-`r gtsummary::inline_text(patient_characteristics, variable="bmi", level="N")` patients, of these the mean and standard
-deviation of BMI in patients was  `r gtsummary::inline_text(patient_characteristics, variable="bmi", level="Mean (SD)")`
-whilst the median and inter-quartile range was
-`r gtsummary::inline_text(patient_characteristics, variable="bmi", level="Median (IQR)")`-->
-
-<!-- The most common ASA Score was -->
-<!-- Grade II (n = `r gtsummary::inline_text(patient_characteristics, variable="asa_score", level="II")`) -->
-<!-- with Grade I being the second most common -->
-<!-- (n = `r gtsummary::inline_text(patient_characteristics, variable="asa_score", level="I")`). -->
-
-<!-- ```{r} -->
-<!-- #| label: tbl-neck-irradiation-tableone -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- #| warning: false -->
-<!-- #| tbl-caption: "Previous neck irradiation" -->
-<!-- p_charac <- select(df, c( -->
-<!--   "age", "bmi", "referral_source", "two_week_wait_referral", "smoking_status", -->
-<!--   "previous_neck_irradiation", "asa_score" -->
-<!-- )) -->
-<!-- CreateTableOne( -->
-<!--   data = p_charac, vars = c( -->
-<!--     "age", "bmi", -->
-<!--     "referral_source", -->
-<!--     "two_week_wait_referral", -->
-<!--     "smoking_status", -->
-<!--     "previous_neck_irradiation", -->
-<!--     "asa_score" -->
-<!--   ), -->
-<!--   factorVars = c("previous_neck_irradiation") -->
-<!-- ) -->
-<!-- ``` -->
 
 
 ```{r}
@@ -469,8 +406,8 @@ whilst the median and inter-quartile range was
 neck_symptoms_imaging <- df |>
   dplyr::ungroup() |>
   dplyr::select(c(
-    "neck_symptoms", "neck_lump", "compressive_symptoms", "nodule_rapid_growth",  "hyperthyroidism", "hypothyroidism", 
-    "clinical_assessment", "palpable_lymphadenopathy", "retrosternal", "incidental_imaging", "incidental_imaging_type" 
+    "neck_symptoms", "neck_lump", "compressive_symptoms", "nodule_rapid_growth",  "hyperthyroidism", "hypothyroidism",
+    "clinical_assessment", "palpable_lymphadenopathy", "retrosternal", "incidental_imaging", "incidental_imaging_type"
   )) |>
   gtsummary::tbl_summary(
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
@@ -478,54 +415,23 @@ neck_symptoms_imaging <- df |>
   ) |>
   gtsummary::modify_caption("Clinical presentations and assessments of the study population")
 neck_symptoms_imaging
+
 ```
 
-The modes of clinical presentation are presented in @tbl-neck-symptoms-imaging-gtsummary. 
+The modes of clinical presentation are presented in @tbl-neck-symptoms-imaging-gtsummary.
 A total of `r gtsummary::inline_text(neck_symptoms_imaging, variable="neck_symptoms")` patients presented with neck symptoms.
 Thyroid nodules were incidental detected on imaging in
 `r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging")` patients. Ultrasound neck for unrelated
-pathology was the commonest imaging modality for incidental detection, followed by CT.
+pathology was the most common imaging modality for incidental detection, followed by CT.
 
-<!---cases of which  Ultrasound
+cases of which  Ultrasound
 (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="Ultrasound")`) and CT
 (`r gtsummary::inline_text(neck_symptoms_imaging, variable="incidental_imaging_type", level="CT")`)
 were the most common. Clinical assessment identified the most common nodule type to be single
-(`r gtsummary::inline_text(neck_symptoms_imaging, variable="clinical_assessment", level="Single thyroid node")`)-->
+(`r gtsummary::inline_text(neck_symptoms_imaging, variable="clinical_assessment", level="Single thyroid node")`)
 
 
 
-<!-- ```{r} -->
-<!-- #| label: tbl-neck-symptoms-imaging-tableone -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- #| warning: false -->
-<!-- #| tbl-caption: "Neck Symptoms and Imaging" -->
-<!-- c_charac <- select(df, c( -->
-<!--   "neck_symptoms", "incidental_imaging", "incidental_imaging_type", -->
-<!--   "abnormal_thyroid_function", -->
-<!--   "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump", -->
-<!--   "compressive_symptoms", "clinical_assessment", "retrosternal", -->
-<!--   "palpable_lymphadenopathy", "nodule_rapid_growth" -->
-<!-- )) -->
-<!-- CreateTableOne( -->
-<!--   data = c_charac, vars = c( -->
-<!--     "neck_symptoms", "incidental_imaging", -->
-<!--     "incidental_imaging_type", -->
-<!--     "abnormal_thyroid_function", -->
-<!--     "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump", -->
-<!--     "compressive_symptoms", "clinical_assessment", "retrosternal", -->
-<!--     "palpable_lymphadenopathy", "nodule_rapid_growth" -->
-<!--   ), -->
-<!--   factorVars = c( -->
-<!--     "neck_symptoms","incidental_imaging", -->
-<!--     "incidental_imaging_type", -->
-<!--     "abnormal_thyroid_function", -->
-<!--     "hyperthyroidism", "hypothyroidism", "no_symptoms", "neck_lump", -->
-<!--     "compressive_symptoms", "clinical_assessment", "retrosternal", -->
-<!--     "palpable_lymphadenopathy", "nodule_rapid_growth" -->
-<!--   ) -->
-<!-- ) -->
-<!-- ``` -->
 
 
 ```{r}
@@ -546,14 +452,17 @@ ultrasound_investigations <- df |>
   ) |>
   gtsummary::modify_caption("Features of thyroid nodules and U stage on ultrasound scan")
 ultrasound_investigations
+
 ```
-Most patients had ultrasound to evaluate for thyroid nodule either prior to or following initial assessment in 
+Most patients had ultrasound to evaluate for thyroid nodule either prior to or following initial assessment in
 secondary care. The descriptions of the thyroid nodule on ultrasound is presented
 in @tbl-ultrasound-investigations-gtsummary. BTA U classification was the methods generally used to grade the nodules.
-Majority of patients did not have TIRADS reported, thus was not evaluated. Furthermore, elastography was not performed in any patient.
+Majority of patients did not have TIRADS reported, thus was not evaluated. Furthermore, elastography was not performed
+in any patient.
 
 ```{r}
-#| eval: true
+#| label: tbl-bta-u-stage-by-centre
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "BTA U stage by centre"
@@ -563,30 +472,13 @@ u_centre <- df |>
     gtsummary::tbl_summary(by="nodule_ultrasound_u_stage") |>
   gtsummary::modify_caption("BTA U stage by centre")
 u_centre
-print(colnames(u_centre))
+
 ```
 
-<!-- ```{r} -->
-<!-- #| label: tbl-ultrasound-investigations-tableone -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- #| warning: false -->
-<!-- #| tbl-caption: "Ultrasound investigations." -->
-<!-- u_charac <- select(df, c( -->
-<!--   "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage", -->
-<!--   "nodule_ultrasound_lymphadenopathy")) -->
-<!-- CreateTableOne( -->
-<!--   data = u_charac, vars = c( -->
-<!--     "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage", -->
-<!--     "nodule_ultrasound_lymphadenopathy"), -->
-<!--   factorVars = c( -->
-<!--     "nodule_ultrasound_description", "nodule_ultrasound_u_stage", "nodule_ultrasound_lymphadenopathy") -->
-<!-- ) -->
-<!-- ``` -->
 
 ```{r}
 #| label: tbl-fna-biopsy-investigations-gtsummary
-#| eval: true
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "Cytology results in patients who underwent FNA"
@@ -600,61 +492,46 @@ fna_biopsy_investigations <- df |>
   ) |>
   gtsummary::modify_caption("Cytology results in patients who underwent FNA")
 fna_biopsy_investigations
+
 ```
-A total of `r gtsummary::inline_text(fna_biopsy_investigations, variable="nodule_fna")` patients had FNA done to
-evaluate the thyroid nodules. The distribution of the reported BTA Thy classification is presented in
-@tbl-fna-biopsy-investigations-gtsummary. The Bethseda system for reporting thyroid cytology was not used in any of the included centre.
+
 
 ```{r}
-#| label: surgery-histo
-#| eval: true
+#| label: surgery-histology
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "Surgery and diagnosis on histology"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
-surgery_histo <- df |>
-  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
-           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|> 
+surgery_histology <- df |>
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" |
+           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|>
   dplyr::ungroup() |>
-  dplyr::select(c("thyroid_surgery", "final_pathology")) |> 
+  dplyr::select(c("thyroid_surgery", "final_pathology")) |>
     gtsummary::tbl_summary(by="thyroid_surgery") |>
   gtsummary::modify_caption("Surgery and diagnosis on histology")
-surgery_histo
-print(colnames(surgery_histo))
+surgery_histology
+
 ```
+
 ```{r}
 #| label: cancer-rates
-#| eval: true
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "Rates of thyroid cancer"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
 cancer_rates <- df |>
-  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
-           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|> 
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" |
+           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|>
   dplyr::ungroup() |>
-  dplyr::select(c("final_pathology")) |> 
+  dplyr::select(c("final_pathology")) |>
     gtsummary::tbl_summary(by=) |>
   gtsummary::modify_caption("Rates of thyroid cancer")
 cancer_rates
-print(colnames(cancer_rates))
+
 ```
 
-<!-- ```{r} -->
-<!-- #| label: tbl-fna-biopsy-investigations-tableone -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- #| warning: false -->
-<!-- #| tbl-caption: "FNA and Biopsy investigations." -->
-<!-- biopsy <- select(df, c( -->
-<!--   "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy")) -->
-<!-- CreateTableOne( -->
-<!--   data = biopsy, vars = c( -->
-<!--     "nodule_fna", "nodule_fna_result", "nodule_fna_thy", -->
-<!--     "core_biopsy"), -->
-<!--   factorVars = c( -->
-<!--     "nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy")) -->
-<!-- ``` -->
 
 ```{r}
 #| label: tbl-management-review-gtsummary
@@ -680,73 +557,48 @@ management_review
 ```
 
 ```{r}
-#| label: u-stage-histo
-#| eval: true
+#| label: u-stage-histology
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "U stage and histological diagnosis"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
-u_stage_histo <- df |>
-  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
-           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|> 
+u_stage_histology <- df |>
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" |
+           df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|>
   dplyr::ungroup() |>
-  dplyr::select(c("nodule_ultrasound_u_stage", "final_pathology")) |> 
+  dplyr::select(c("nodule_ultrasound_u_stage", "final_pathology")) |>
     gtsummary::tbl_summary(by="nodule_ultrasound_u_stage") |>
   gtsummary::modify_caption("U stage and histological diagnosis")
-u_stage_histo
-print(colnames(u_stage_histo))
+u_stage_histology
+
 ```
 
 
 ```{r}
-#| label: thy-category-histo
-#| eval: true
+#| label: thy-category-histology
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "Thy category and histological diagnosis"
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
-thy_class_histo <- df |>
-  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" | 
+thy_class_histology <- df |>
+  filter(df$thyroid_surgery == "Lobectomy" | df$thyroid_surgery == "Isthmusectomy" |
            df$thyroid_surgery == "total thyroidectomy" | df$thyroid_surgery == "Other")|>
   dplyr::ungroup() |>
   dplyr::select(c("nodule_fna_thy", "final_pathology")) |>
     gtsummary::tbl_summary(by="nodule_fna_thy") |>
   gtsummary::modify_caption("Thy category and histological diagnosis")
-thy_class_histo
-print(colnames(thy_class_histo))
+thy_class_histology
+
 ```
 
 
-<!-- ```{r} -->
-<!-- #| label: tbl-management-review-tableone -->
-<!-- #| eval: false -->
-<!-- #| echo: false -->
-<!-- #| warning: false -->
-<!-- #| tbl-caption: "Management and Review strategies." -->
-<!-- management <- select(df, c( -->
-<!--   "initial_management_decision", "routine_review_offered", -->
-<!--   "routine_review_offered_interval_weeks", "routine_review_ultrasound", -->
-<!--   "routine_review_fna", "routine_review_management_strategy_review", -->
-<!--   "routine_review_management_revised", "routine_review_management_revised_reason", -->
-<!--   "routine_review_confirm_management_plan", "routine_review_patient_signposting_information", -->
-<!--   "thyroid_surgery" -->
-<!-- )) -->
-<!-- tone <- CreateTableOne(data = management, vars = c( -->
-<!--   "initial_management_decision", "routine_review_offered", -->
-<!--   "routine_review_offered_interval_weeks", "routine_review_ultrasound", -->
-<!--   "routine_review_fna", "routine_review_management_strategy_review", -->
-<!--   "routine_review_management_revised", -->
-<!--   "routine_review_management_revised_reason", -->
-<!--   "routine_review_confirm_management_plan", -->
-<!--   "routine_review_patient_signposting_information", -->
-<!--   "thyroid_surgery" -->
-<!-- )) -->
-<!-- ``` -->
 
 
 ```{r}
 #| label: tbl-final-pathology-gtsummary
-#| eval: true
+#| eval: false
 #| echo: false
 #| warning: false
 #| tbl-caption: "Final Pathology."
@@ -758,7 +610,7 @@ final_pathology <- df |>
   add_p() |>
   gtsummary::modify_caption("Final Pathology.")
 final_pathology
-print(colnames(final_pathology))
+
 ```
 
 ### Patient characteristics
