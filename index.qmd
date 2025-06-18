@@ -169,7 +169,7 @@ database. The REDCap database is an online data collection tool established for 
 
 ### Data analysis
 
-All data collected was analysed using the R Statistical Software @r_citation and the Tidyverse packages @tidyverse. An
+All data collected was analysed using the R Statistical Software @r_citationRStudio.Version() and the Tidyverse packages @tidyverse. An
 initial descriptive analysis of the variables were performed. Continuous data was summarised as mean and standard
 deviation (SD) if normally distributed, and median and interquartile range (IQR) where non-normally
 distributed. Categorical data was summarised as frequency and percentages. The Chi-squared test was used to examine the
@@ -470,7 +470,7 @@ neck_symptoms_imaging <- df |>
   dplyr::ungroup() |>
   dplyr::select(c(
     "neck_symptoms", "neck_lump", "compressive_symptoms", "nodule_rapid_growth",  "hyperthyroidism", "hypothyroidism", 
-    "clinical_assessment", "palpable_lymphadenopathy", "retrosternal", "incidental_imaging", "incidental_imaging_type" 
+    "clinical_assessment", "palpable_lymphadenopathy", "retrosternal", "incidental_imaging", "incidental_imaging_type",  "no_symptoms", "thyroid_dysfunction",
   )) |>
   gtsummary::tbl_summary(
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
@@ -478,6 +478,38 @@ neck_symptoms_imaging <- df |>
   ) |>
   gtsummary::modify_caption("Clinical presentations and assessments of the study population")
 neck_symptoms_imaging
+```
+
+```{r}
+neck_symptoms_imaging_v2 <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c(
+    "neck_symptoms", "neck_lump", "compressive_symptoms", "nodule_rapid_growth", 
+    "hyperthyroidism", "hypothyroidism", "clinical_assessment", "palpable_lymphadenopathy", 
+    "retrosternal", "incidental_imaging", "incidental_imaging_type", "no_symptoms", 
+    "thyroid_dysfunction"
+  )) |>
+  gtsummary::tbl_summary(
+    label = list(
+      thyroid_dysfunction = "Thyroid Dysfunction",
+      neck_symptoms = "Neck Symptoms",
+      neck_lump = "Neck Lump",
+      compressive_symptoms = "Compressive Symptoms",
+      nodule_rapid_growth = "Nodule Rapid Growth",
+      hyperthyroidism = "Hyperthyroidism",
+      hypothyroidism = "Hypothyroidism",
+      clinical_assessment = "Clinical Assessment",
+      palpable_lymphadenopathy = "Palpable Lymphadenopathy",
+      retrosternal = "Retrosternal Symptoms",
+      incidental_imaging = "Incidental Imaging",
+      incidental_imaging_type = "Type of Incidental Imaging",
+      no_symptoms = "No Symptoms"
+    ),
+    percent = "column",      # Include percentages for categorical variables by column
+    missing = "no"           # Exclude missing values
+  ) |>
+  gtsummary::modify_caption("Clinical presentations and assessments of the study population")
+neck_symptoms_imaging_v2
 ```
 
 The modes of clinical presentation are presented in @tbl-neck-symptoms-imaging-gtsummary. 
@@ -538,7 +570,7 @@ were the most common. Clinical assessment identified the most common nodule type
 ultrasound_investigations <- df |>
   dplyr::ungroup() |>
   dplyr::select(
-    c("nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage",
+    c("ultrasound", "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", "nodule_ultrasound_u_stage",
       "nodule_ultrasound_lymphadenopathy")) |>
   gtsummary::tbl_summary(
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
@@ -547,6 +579,102 @@ ultrasound_investigations <- df |>
   gtsummary::modify_caption("Features of thyroid nodules and U stage on ultrasound scan")
 ultrasound_investigations
 ```
+
+```{r}
+ultrasound_investigations_v2 <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(
+    c("ultrasound", "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", 
+      "nodule_ultrasound_u_stage", "nodule_ultrasound_lymphadenopathy")
+  ) |>
+  gtsummary::tbl_summary(
+    label = list(
+      ultrasound = "Ultrasound Performed",
+      nodule_ultrasound_description = "Nodule Description",
+      nodule_maxmimum_diameter_mm = "Maximum Diameter (mm)",
+      nodule_ultrasound_u_stage = "U Stage",
+      nodule_ultrasound_lymphadenopathy = "Lymphadenopathy"
+    ),
+    percent = "column",      # Percentages for categorical variables by column
+    missing = "always"           # Exclude missing values
+  ) |>
+  gtsummary::modify_caption("Features of thyroid nodules and U stage on ultrasound scan")
+ultrasound_investigations_v2
+```
+
+```{r}
+ultrasound_investigations_v2 <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(
+    c("ultrasound", "nodule_ultrasound_description", "nodule_maxmimum_diameter_mm", 
+      "nodule_ultrasound_u_stage", "nodule_ultrasound_tirads", "nodule_ultrasound_lymphadenopathy")
+  ) |>
+  gtsummary::tbl_summary(
+    label = list(
+      ultrasound = "Ultrasound Performed",
+      nodule_ultrasound_description = "Nodule Description",
+      nodule_maxmimum_diameter_mm = "Maximum Diameter (mm)",
+      nodule_ultrasound_u_stage = "U Stage",
+      nodule_ultrasound_lymphadenopathy = "Lymphadenopathy",
+      nodule_ultrasound_tirads = "TI-RADS"
+    ),
+    percent = "column",      # Percentages for categorical variables by column
+    missing = "always"       # Always include missing values
+  ) |>
+  gtsummary::add_n() |>
+  gtsummary::modify_caption("Features of thyroid nodules and U stage on ultrasound scan")
+  
+ultrasound_investigations_v2
+
+```
+
+```{r}
+cross_sec <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(
+    ct_neck, 
+    ct_neck_local_invasion, 
+    ct_neck_plan_surgical_approach, 
+    ct_neck_lymphadenopathy_extent, 
+    ct_neck_tracheal_compression, 
+    ct_neck_unknown, 
+    ct_neck_unrelated, 
+    mri_neck, 
+    mri_neck_local_invasion, 
+    mri_neckplan_surgical_approach, 
+    mri_neck_lymphadenopathy_extent, 
+    mri_neck_tracheal_compression, 
+    mri_neck_unknown, 
+    mri_neck_unrelated, 
+    iodine_scan
+  ) |>
+  gtsummary::tbl_summary(
+    label = list(
+      ct_neck ~ "CT Neck",
+      ct_neck_local_invasion ~ "CT Neck: Local Invasion",
+      ct_neck_plan_surgical_approach ~ "CT Neck: Planned Surgical Approach",
+      ct_neck_lymphadenopathy_extent ~ "CT Neck: Lymphadenopathy Extent",
+      ct_neck_tracheal_compression ~ "CT Neck: Tracheal Compression",
+      ct_neck_unknown ~ "CT Neck: Unknown",
+      ct_neck_unrelated ~ "CT Neck: Unrelated",
+      mri_neck ~ "MRI Neck",
+      mri_neck_local_invasion ~ "MRI Neck: Local Invasion",
+      mri_neckplan_surgical_approach ~ "MRI Neck: Planned Surgical Approach",
+      mri_neck_lymphadenopathy_extent ~ "MRI Neck: Lymphadenopathy Extent",
+      mri_neck_tracheal_compression ~ "MRI Neck: Tracheal Compression",
+      mri_neck_unknown ~ "MRI Neck: Unknown",
+      mri_neck_unrelated ~ "MRI Neck: Unrelated",
+      iodine_scan ~ "Iodine Scan"
+    ),
+    percent = "column",      # Percentages for categorical variables by column
+    missing = "ifany"       # Always include missing values
+  ) |>
+  gtsummary::add_n() |>
+  gtsummary::modify_caption("Other imaging done")
+cross_sec
+```
+
+
 Most patients had ultrasound to evaluate for thyroid nodule either prior to or following initial assessment in 
 secondary care. The descriptions of the thyroid nodule on ultrasound is presented
 in @tbl-ultrasound-investigations-gtsummary. BTA U classification was the methods generally used to grade the nodules.
@@ -561,9 +689,24 @@ u_centre <- df |>
   dplyr::ungroup() |>
   dplyr::select(c("data_access_group", "nodule_ultrasound_u_stage")) |>
     gtsummary::tbl_summary(by="nodule_ultrasound_u_stage") |>
+```
+
+
+```{r}
+library(dplyr)
+library(gtsummary)
+
+u_centre_row <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("data_access_group", "nodule_ultrasound_u_stage")) |>
+  gtsummary::tbl_summary(
+    by = "nodule_ultrasound_u_stage", # Group by this variable
+    percent = "row"                   # Add row percentages
+  ) |>
   gtsummary::modify_caption("BTA U stage by centre")
-u_centre
-print(colnames(u_centre))
+
+u_centre_row
+
 ```
 
 <!--u_centre-->
@@ -595,9 +738,18 @@ fna_centre <- df |>
   dplyr::ungroup() |>
   dplyr::select(c("data_access_group", "nodule_fna_thy")) |>
     gtsummary::tbl_summary(by="nodule_fna_thy") |>
-  gtsummary::modify_caption("FNA stage by centre")
+  gtsummary::modify_caption("FNA stage by centre", ) 
 fna_centre
 print(colnames(fna_centre))
+```
+
+```{r}
+fna_centre_row <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("data_access_group", "nodule_fna_thy")) |>
+  gtsummary::tbl_summary(by = "nodule_fna_thy", percent = "row") |>
+  gtsummary::modify_caption("FNA stage by centre (with row percentages)")
+fna_centre_row
 ```
 
 <!--fna_centre-->
@@ -614,11 +766,62 @@ fna_biopsy_investigations <- df |>
   dplyr::select(c("nodule_fna", "nodule_fna_thy", "core_biopsy")) |>
   gtsummary::tbl_summary(
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
-    missing="no"           # Exclude missing, options are "no", "ifany" and "always"
+    missing="ifany"           # Exclude missing, options are "no", "ifany" and "always"
   ) |>
   gtsummary::modify_caption("Cytology results in patients who underwent FNA")
 fna_biopsy_investigations
 ```
+```{r}
+fna_biopsy_investigations <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("nodule_fna", "nodule_fna_result", "nodule_fna_thy", "core_biopsy")) |>
+  gtsummary::tbl_summary(
+    percent = "column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+    missing = "ifany"        # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("Cytology results in patients who underwent FNA") |>
+  gtsummary::modify_table_styling(
+    columns = where(is.numeric), 
+    rows = everything(), 
+    fmt_fun = ~ scales::number_format(accuracy = 0.1)
+  )
+fna_biopsy_investigations
+```
+
+```{r}
+bethesda_fna <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("nodule_fna_bethesda")) |>
+  gtsummary::tbl_summary(
+    percent = "column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+    missing = "ifany"        # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("Bethseda FNA result") |>
+  gtsummary::modify_table_styling(
+    columns = where(is.numeric), 
+    rows = everything(), 
+    fmt_fun = ~ scales::number_format(accuracy = 0.1)
+  )
+bethesda_fna
+```
+
+```{r}
+lymph_node_fna <- df |>
+  dplyr::ungroup() |>
+  dplyr::select(c("lymph_node_fna", "lymph_node_fna_result")) |>
+  gtsummary::tbl_summary(
+    percent = "column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
+    missing = "ifany"        # Exclude missing, options are "no", "ifany" and "always"
+  ) |>
+  gtsummary::modify_caption("Result from lymph node biopsy") |>
+  gtsummary::modify_table_styling(
+    columns = where(is.numeric), 
+    rows = everything(), 
+    fmt_fun = ~ scales::number_format(accuracy = 0.1)
+  )
+lymph_node_fna
+```
+
 A total of `r gtsummary::inline_text(fna_biopsy_investigations, variable="nodule_fna")` patients had FNA done to
 evaluate the thyroid nodules. The distribution of the reported BTA Thy classification is presented in
 @tbl-fna-biopsy-investigations-gtsummary. The Bethseda system for reporting thyroid cytology was not used in any of the included centre.
@@ -683,6 +886,7 @@ print(colnames(cancer_rates))
 #| warning: false
 #| tbl-caption: "Management and Review strategies."
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
+# Remove spaces
 management_review <- df |>
   dplyr::ungroup() |>
   dplyr::select(
@@ -693,11 +897,41 @@ management_review <- df |>
   )) |>
   gtsummary::tbl_summary(
     percent="column",      # Include percentages for categorical variables by column options "column", "row" or "cell"
-    missing="no"           # Exclude missing, options are "no", "ifany" and "always"
+    missing="ifany"           # Exclude missing, options are "no", "ifany" and "always"
   ) |>
   gtsummary::modify_caption("Management and Review strategies.")
 management_review
 ```
+
+table(df$routine_review_management_strategy_review)
+table(df$routine_review_management_revised)
+
+
+```{r}
+library(gt)
+# Filter the data for Surgery
+surgery_data <- df %>%
+  filter(routine_review_management_revised == "Surgery")
+
+# Summarize the data by reason
+summary_data <- surgery_data %>%
+  group_by(routine_review_management_revised_reason) %>%
+  summarise(Count = n()) %>%
+  arrange(desc(Count))
+
+# Create a gt summary table
+summary_table <- summary_data %>%
+  gt() %>%
+  tab_header(
+    title = "Reasons for Surgical Management",
+    subtitle = "Summary of reasons for patients who underwent surgery"
+  )
+
+# Print the table
+summary_table
+
+```
+
 
 ```{r}
 #| label: u-stage-histo
@@ -767,7 +1001,7 @@ print(colnames(thy_class_histo))
 summary(df$nodule_maxmimum_diameter_mm)
 table(df$nodule_fna)-->
 
-<!--```{r}
+```{r}
 nodule_size_fna <- df |>
   mutate(nodule_size_category = case_when(
     nodule_maxmimum_diameter_mm < 10 ~ "<10 mm",
@@ -782,7 +1016,6 @@ tabulated_data <- nodule_size_fna |>
 
 # Print the result
 print(tabulated_data)
--->
 ```
 
 
@@ -795,13 +1028,15 @@ print(tabulated_data)
 # IMPORTANT : For options to tbl_summary() see https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html
 final_pathology <- df |>
   dplyr::ungroup() |>
-  dplyr::select(c("final_pathology", "nodule_fna", "age", "bmi", "smoking_status", "asa_score")) |>
-    gtsummary::tbl_summary(by="final_pathology") |>
+  dplyr::select(c("final_pathology", "age", "bmi", "smoking_status", "asa_score", "compressive_symptoms", "hypothyroidism","hyperthyroidism", "neck_lump", "incidental_imaging","retrosternal", "palpable_lymphadenopathy","nodule_rapid_growth",
+  "thyroid_dysfunction", "abnormal_thyroid_function", "nodule_ultrasound_u_stage", "nodule_ultrasound_lymphadenopathy", "nodule_maxmimum_diameter_mm")) |>
+    gtsummary::tbl_summary(by="final_pathology", percent = "row") |>
   add_p() |>
   gtsummary::modify_caption("Final Pathology.")
 final_pathology
 print(colnames(final_pathology))
 ```
+
 
 ### Patient characteristics
 
@@ -1056,6 +1291,11 @@ variables.
 Around 60% of patients who underwent diagnostic thyroidectomy for thyroid nodules were found to have benign
 pathology. This highlights the need for better preoperative descriminators between benign and malignant thyroid nodules,
 to avoid unncessary diagnostic surgery and its associated morbidity.
+
+names(df)
+library(Hmisc)
+sapply(, label)
+
 
 ## Notes from Neil
 
